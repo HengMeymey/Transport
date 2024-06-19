@@ -1,0 +1,10 @@
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\bin\Debug\Final.exe.config
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\bin\Debug\Final.exe
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\bin\Debug\Final.pdb
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\obj\Debug\Final.csproj.AssemblyReference.cache
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\obj\Debug\Final.Form1.resources
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\obj\Debug\Final.Properties.Resources.resources
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\obj\Debug\Final.csproj.GenerateResource.cache
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\obj\Debug\Final.csproj.CoreCompileInputs.cache
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\obj\Debug\Final.exe
+C:\Users\MeyMey Heng\Desktop\ISAD\Final\obj\Debug\Final.pdb
