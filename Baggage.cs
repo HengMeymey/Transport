@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Transportation
+namespace Final;
+
+public partial class Baggage : Form
 {
-    public partial class Baggage : Form
+    public Baggage()
     {
-        public Baggage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
