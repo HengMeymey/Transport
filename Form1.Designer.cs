@@ -18,7 +18,7 @@ namespace Final
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("GetAllCustomers", connection);
+                SqlCommand command = new SqlCommand("spGetAllCustomers", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 DataTable dataTable = new DataTable();
 
@@ -47,7 +47,7 @@ namespace Final
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand("GetAllCustomers", connection))
+                using (SqlCommand command = new SqlCommand("spGetAllCustomers", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
