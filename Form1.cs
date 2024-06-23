@@ -17,7 +17,7 @@ namespace Final
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        private DataGridView dataGridView1;
+        
 
         /// <summary>
         /// Clean up any resources being used.
