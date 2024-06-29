@@ -27,5 +27,17 @@ namespace Final
         {
             
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new BusForm();
+            formToOpen.Show();
+        }
+
+        public class BusForm : Bus
+        {
+
+        }
     }
 }
