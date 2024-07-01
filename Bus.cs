@@ -15,14 +15,14 @@ namespace Final
 {
     public partial class Bus : Form
     {
-
-        //string connectionString = "Data Source=localhost;Initial Catalog=dboTransportation;Integrated Security=True;";
         public Bus()
         {
             InitializeComponent();
             txtID.ReadOnly = true;
             dataGridView1.CellClick += dataGridView1_CellContentClick;
         }
+
+        string connectionString = "Data Source=localhost;Initial Catalog=dboTransportation;Integrated Security=True;";
 
         private void label4_Click(object sender, EventArgs e)
         {

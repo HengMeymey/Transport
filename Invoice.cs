@@ -30,5 +30,10 @@ namespace Final
         {
 
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
