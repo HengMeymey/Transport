@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Final
 {
-    public partial class Baggage : Form
+    public partial class Customer : Form
     {
-        public Baggage()
+        public Customer()
         {
             InitializeComponent();
         }
