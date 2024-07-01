@@ -16,12 +16,8 @@ namespace Final
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            Application.Run(new Invoice());
-=======
-            //Application.Run(new Form2());
-            Application.Run(new Schedule());
->>>>>>> 26b7659402ce50a6abf96444aa4d063bea7fb9ae
+
+            Application.Run(new Form2());
         }
     }
 }
