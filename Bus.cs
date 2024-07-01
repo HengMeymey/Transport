@@ -15,6 +15,8 @@ namespace Final
 {
     public partial class Bus : Form
     {
+
+        //string connectionString = "Data Source=localhost;Initial Catalog=dboTransportation;Integrated Security=True;";
         public Bus()
         {
             InitializeComponent();
@@ -58,8 +60,7 @@ namespace Final
         }
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
-
+           
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -106,8 +107,6 @@ namespace Final
             int busID;
             if (int.TryParse(txtID.Text, out busID))
             {
-                string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
-
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     try
@@ -153,8 +152,6 @@ namespace Final
             int busID;
             if (int.TryParse(txtID.Text, out busID))
             {
-                string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
-
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     try
@@ -211,8 +208,6 @@ namespace Final
         }
         private void PopulateDataGridView()
         {
-            string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -238,7 +233,7 @@ namespace Final
 
         private void Bus_Load(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
+
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -266,7 +261,6 @@ namespace Final
             int busID;
             if (int.TryParse(txtsearch.Text, out busID))
             {
-                string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
