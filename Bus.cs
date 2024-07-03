@@ -56,9 +56,10 @@ namespace Final
         {
 
         }
+        string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
+           
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -106,7 +107,7 @@ namespace Final
             int busID;
             if (int.TryParse(txtID.Text, out busID))
             {
-                string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
+               
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -153,7 +154,7 @@ namespace Final
             int busID;
             if (int.TryParse(txtID.Text, out busID))
             {
-                string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
+              
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -211,7 +212,7 @@ namespace Final
         }
         private void PopulateDataGridView()
         {
-            string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
+           
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -266,7 +267,7 @@ namespace Final
             int busID;
             if (int.TryParse(txtsearch.Text, out busID))
             {
-                string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
+               
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -313,6 +314,11 @@ namespace Final
             {
                 MessageBox.Show("Please enter a valid Bus ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
