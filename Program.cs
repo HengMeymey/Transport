@@ -17,7 +17,7 @@ namespace Final
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Schedule());
+            Application.Run(new Payment());
         }
     }
 }
