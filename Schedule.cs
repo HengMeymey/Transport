@@ -16,5 +16,10 @@ namespace Final
         {
             InitializeComponent();
         }
+
+        private void Schedule_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
