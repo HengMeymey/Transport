@@ -66,12 +66,13 @@
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(1260, 538);
+            this.btnExit.Location = new System.Drawing.Point(979, 522);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 40);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // txtScheduleID
             // 
@@ -79,7 +80,7 @@
             this.txtScheduleID.Location = new System.Drawing.Point(141, 49);
             this.txtScheduleID.Name = "txtScheduleID";
             this.txtScheduleID.ReadOnly = true;
-            this.txtScheduleID.Size = new System.Drawing.Size(222, 33);
+            this.txtScheduleID.Size = new System.Drawing.Size(222, 40);
             this.txtScheduleID.TabIndex = 2;
             this.txtScheduleID.TabStop = false;
             // 
@@ -88,7 +89,7 @@
             this.txtDepartureTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDepartureTime.Location = new System.Drawing.Point(141, 192);
             this.txtDepartureTime.Name = "txtDepartureTime";
-            this.txtDepartureTime.Size = new System.Drawing.Size(222, 40);
+            this.txtDepartureTime.Size = new System.Drawing.Size(222, 47);
             this.txtDepartureTime.TabIndex = 2;
             // 
             // txtBusID
@@ -96,7 +97,7 @@
             this.txtBusID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBusID.Location = new System.Drawing.Point(141, 95);
             this.txtBusID.Name = "txtBusID";
-            this.txtBusID.Size = new System.Drawing.Size(222, 40);
+            this.txtBusID.Size = new System.Drawing.Size(222, 47);
             this.txtBusID.TabIndex = 2;
             // 
             // GroupBox1
@@ -117,7 +118,7 @@
             this.GroupBox1.Controls.Add(this.Label2);
             this.GroupBox1.Controls.Add(this.txtDestination);
             this.GroupBox1.Controls.Add(this.Label1);
-            this.GroupBox1.Location = new System.Drawing.Point(963, 122);
+            this.GroupBox1.Location = new System.Drawing.Point(682, 104);
             this.GroupBox1.Name = "GroupBox1";
             this.GroupBox1.Size = new System.Drawing.Size(374, 410);
             this.GroupBox1.TabIndex = 13;
@@ -128,7 +129,7 @@
             this.Label6.AutoSize = true;
             this.Label6.Location = new System.Drawing.Point(13, 294);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(61, 33);
+            this.Label6.Size = new System.Drawing.Size(73, 40);
             this.Label6.TabIndex = 3;
             this.Label6.Text = "Origin";
             // 
@@ -137,7 +138,7 @@
             this.txtOrigin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOrigin.Location = new System.Drawing.Point(141, 287);
             this.txtOrigin.Name = "txtOrigin";
-            this.txtOrigin.Size = new System.Drawing.Size(222, 40);
+            this.txtOrigin.Size = new System.Drawing.Size(222, 47);
             this.txtOrigin.TabIndex = 2;
             // 
             // Label5
@@ -145,7 +146,7 @@
             this.Label5.AutoSize = true;
             this.Label5.Location = new System.Drawing.Point(13, 245);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(52, 33);
+            this.Label5.Size = new System.Drawing.Size(61, 40);
             this.Label5.TabIndex = 3;
             this.Label5.Text = "Fare";
             // 
@@ -154,7 +155,7 @@
             this.txtBusDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBusDate.Location = new System.Drawing.Point(141, 141);
             this.txtBusDate.Name = "txtBusDate";
-            this.txtBusDate.Size = new System.Drawing.Size(222, 40);
+            this.txtBusDate.Size = new System.Drawing.Size(222, 47);
             this.txtBusDate.TabIndex = 2;
             // 
             // label8
@@ -162,7 +163,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(13, 148);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(92, 33);
+            this.label8.Size = new System.Drawing.Size(111, 40);
             this.label8.TabIndex = 3;
             this.label8.Text = "Bus Date ";
             // 
@@ -171,7 +172,7 @@
             this.Label4.AutoSize = true;
             this.Label4.Location = new System.Drawing.Point(13, 199);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(137, 33);
+            this.Label4.Size = new System.Drawing.Size(166, 40);
             this.Label4.TabIndex = 3;
             this.Label4.Text = "Departure Time";
             // 
@@ -180,7 +181,7 @@
             this.Label3.AutoSize = true;
             this.Label3.Location = new System.Drawing.Point(13, 343);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(104, 33);
+            this.Label3.Size = new System.Drawing.Size(126, 40);
             this.Label3.TabIndex = 3;
             this.Label3.Text = "Destination";
             // 
@@ -189,7 +190,7 @@
             this.txtFare.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFare.Location = new System.Drawing.Point(141, 238);
             this.txtFare.Name = "txtFare";
-            this.txtFare.Size = new System.Drawing.Size(222, 40);
+            this.txtFare.Size = new System.Drawing.Size(222, 47);
             this.txtFare.TabIndex = 2;
             // 
             // Label2
@@ -197,7 +198,7 @@
             this.Label2.AutoSize = true;
             this.Label2.Location = new System.Drawing.Point(13, 97);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(68, 33);
+            this.Label2.Size = new System.Drawing.Size(82, 40);
             this.Label2.TabIndex = 3;
             this.Label2.Text = "Bus ID";
             this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -207,7 +208,7 @@
             this.txtDestination.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDestination.Location = new System.Drawing.Point(141, 336);
             this.txtDestination.Name = "txtDestination";
-            this.txtDestination.Size = new System.Drawing.Size(222, 40);
+            this.txtDestination.Size = new System.Drawing.Size(222, 47);
             this.txtDestination.TabIndex = 2;
             // 
             // Label1
@@ -215,7 +216,7 @@
             this.Label1.AutoSize = true;
             this.Label1.Location = new System.Drawing.Point(13, 49);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(112, 33);
+            this.Label1.Size = new System.Drawing.Size(135, 40);
             this.Label1.TabIndex = 3;
             this.Label1.Text = "Schedule ID";
             // 
@@ -223,9 +224,9 @@
             // 
             this.Label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label7.AutoSize = true;
-            this.Label7.Location = new System.Drawing.Point(961, 19);
+            this.Label7.Location = new System.Drawing.Point(680, 19);
             this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(127, 33);
+            this.Label7.Size = new System.Drawing.Size(153, 40);
             this.Label7.TabIndex = 12;
             this.Label7.Text = "Search here : ";
             // 
@@ -233,16 +234,16 @@
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Location = new System.Drawing.Point(1094, 12);
+            this.txtSearch.Location = new System.Drawing.Point(813, 12);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(230, 40);
+            this.txtSearch.Size = new System.Drawing.Size(230, 47);
             this.txtSearch.TabIndex = 11;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(985, 71);
+            this.btnAdd.Location = new System.Drawing.Point(704, 52);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 40);
             this.btnAdd.TabIndex = 7;
@@ -253,7 +254,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(1152, 538);
+            this.btnCancel.Location = new System.Drawing.Point(833, 522);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 40);
             this.btnCancel.TabIndex = 8;
@@ -264,7 +265,7 @@
             // txtDelete
             // 
             this.txtDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDelete.Location = new System.Drawing.Point(1249, 71);
+            this.txtDelete.Location = new System.Drawing.Point(968, 52);
             this.txtDelete.Name = "txtDelete";
             this.txtDelete.Size = new System.Drawing.Size(75, 40);
             this.txtDelete.TabIndex = 9;
@@ -275,7 +276,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(1114, 71);
+            this.btnSave.Location = new System.Drawing.Point(833, 52);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 40);
             this.btnSave.TabIndex = 10;
@@ -312,7 +313,7 @@
             this.dgvSC.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSC.RowTemplate.Height = 24;
             this.dgvSC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSC.Size = new System.Drawing.Size(952, 590);
+            this.dgvSC.Size = new System.Drawing.Size(672, 568);
             this.dgvSC.TabIndex = 5;
             // 
             // ShceduleID
@@ -325,52 +326,57 @@
             this.ShceduleID.MinimumWidth = 6;
             this.ShceduleID.Name = "ShceduleID";
             this.ShceduleID.ReadOnly = true;
-            this.ShceduleID.Width = 139;
+            this.ShceduleID.Width = 169;
             // 
             // Column2
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Column2.DataPropertyName = "BusID";
             this.Column2.HeaderText = "Bus ID";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 116;
             // 
             // Column3
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Column3.DataPropertyName = "BusDate";
             this.Column3.HeaderText = "Bus Date";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 139;
             // 
             // Column4
             // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Column4.DataPropertyName = "DepartureTime";
             this.Column4.HeaderText = "Departure Time";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            this.Column4.Width = 125;
+            this.Column4.Width = 200;
             // 
             // Column5
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Column5.DataPropertyName = "Fare";
             this.Column5.HeaderText = "Fare";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Width = 95;
             // 
             // Column6
             // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Column6.DataPropertyName = "Origin";
             this.Column6.HeaderText = "Origin";
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            this.Column6.Width = 107;
             // 
             // ColumnDestinatin
             // 
@@ -381,10 +387,10 @@
             this.ColumnDestinatin.Name = "ColumnDestinatin";
             this.ColumnDestinatin.ReadOnly = true;
             // 
-            // Shcedule
+            // Schedule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1345, 590);
+            this.ClientSize = new System.Drawing.Size(1064, 568);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.Label7);
@@ -396,7 +402,7 @@
             this.Controls.Add(this.dgvSC);
             this.Font = new System.Drawing.Font("Khmer OS Siemreap", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.Name = "Shcedule";
+            this.Name = "Schedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shcedule";
             this.Load += new System.EventHandler(this.Shcedule_Load);
@@ -432,6 +438,7 @@
         internal System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtBusDate;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dgvSC;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShceduleID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -439,6 +446,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDestinatin;
-        private System.Windows.Forms.DataGridView dgvSC;
     }
 }

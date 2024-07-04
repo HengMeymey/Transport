@@ -15,13 +15,12 @@ namespace Final
     {
         SqlConnection connection = new SqlConnection(@"Data Source=localhost;Initial Catalog=dboTransportation;Integrated Security=True;");
         BindingSource ShceduleBindingSource = new BindingSource();
-
         SqlDataAdapter ShceduleAdapter = new SqlDataAdapter();
         DataSet dataSet = new DataSet();
         DataSet datasetbackup = new DataSet();
 
         private string VIEW_SHCEDULE_INFO = "tbSchedule";
-        private string INSERT_SChedule = "InsertSchedule ";
+        private string INSERT_SChedule = "InsertSchedule";
         private string DELETE_SCHEDULE = "DeleteSchedule";
         private string UPDATE_SCHEDULE = "UpdateSchedule";
         private string SEARCH_SCHEDULE = "GetSchedule";
@@ -35,49 +34,61 @@ namespace Final
 
         private void SetUpCommand()
         {
-            ShceduleAdapter.SelectCommand = new SqlCommand($"select *from {VIEW_SHCEDULE_INFO}", connection);
-            ShceduleAdapter.Fill(dataSet, VIEW_SHCEDULE_INFO);
-            ShceduleBindingSource.DataSource = dataSet;
-            ShceduleBindingSource.DataMember = VIEW_SHCEDULE_INFO;
-            dgvSC.DataSource = ShceduleBindingSource;
-            //============[INSERT]=========================
-            ShceduleAdapter.InsertCommand = new SqlCommand()
+            try
             {
-                CommandText = INSERT_SChedule
-                ,
-                CommandType = CommandType.StoredProcedure,
-                Connection = this.connection
-            };
-            ShceduleAdapter.InsertCommand.Parameters.Add("@BusID", SqlDbType.Int, 0, "BusID");
-            ShceduleAdapter.InsertCommand.Parameters.Add("@BusDate", SqlDbType.Date, 0, "BusDate");
-            ShceduleAdapter.InsertCommand.Parameters.Add("@DepartureTime", SqlDbType.DateTime, 0, "DepartureTime");
-            ShceduleAdapter.InsertCommand.Parameters.Add("@Fare", SqlDbType.Decimal, 0, "Fare");
-            ShceduleAdapter.InsertCommand.Parameters.Add("@Origin", SqlDbType.VarChar, 50, "Origin");
-            ShceduleAdapter.InsertCommand.Parameters.Add("@Destination", SqlDbType.VarChar, 50, "Destination");
+                ShceduleAdapter.SelectCommand = new SqlCommand($"SELECT * FROM {VIEW_SHCEDULE_INFO}", connection);
+                connection.Open();
+                ShceduleAdapter.Fill(dataSet, VIEW_SHCEDULE_INFO);
+                connection.Close();
 
-            //========================[DELETE]======================
-            ShceduleAdapter.DeleteCommand = new SqlCommand()
+                ShceduleBindingSource.DataSource = dataSet;
+                ShceduleBindingSource.DataMember = VIEW_SHCEDULE_INFO;
+                dgvSC.DataSource = ShceduleBindingSource;
+
+                // Insert Command
+                ShceduleAdapter.InsertCommand = new SqlCommand()
+                {
+                    CommandText = INSERT_SChedule,
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = connection
+                };
+                ShceduleAdapter.InsertCommand.Parameters.Add("@BusID", SqlDbType.Int, 0, "BusID");
+                ShceduleAdapter.InsertCommand.Parameters.Add("@BusDate", SqlDbType.Date, 0, "BusDate");
+                ShceduleAdapter.InsertCommand.Parameters.Add("@DepartureTime", SqlDbType.DateTime, 0, "DepartureTime");
+                ShceduleAdapter.InsertCommand.Parameters.Add("@Fare", SqlDbType.Decimal, 0, "Fare");
+                ShceduleAdapter.InsertCommand.Parameters.Add("@Origin", SqlDbType.VarChar, 50, "Origin");
+                ShceduleAdapter.InsertCommand.Parameters.Add("@Destination", SqlDbType.VarChar, 50, "Destination");
+
+                // Delete Command
+                ShceduleAdapter.DeleteCommand = new SqlCommand()
+                {
+                    CommandText = DELETE_SCHEDULE,
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = connection
+                };
+                ShceduleAdapter.DeleteCommand.Parameters.Add("@ScheduleID", SqlDbType.Int, 0, "ScheduleID");
+
+                // Update Command
+                ShceduleAdapter.UpdateCommand = new SqlCommand()
+                {
+                    CommandText = UPDATE_SCHEDULE,
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = connection
+                };
+                ShceduleAdapter.UpdateCommand.Parameters.Add("@ScheduleID", SqlDbType.Int, 0, "ScheduleID");
+                ShceduleAdapter.UpdateCommand.Parameters.Add("@BusID", SqlDbType.Int, 0, "BusID");
+                ShceduleAdapter.UpdateCommand.Parameters.Add("@BusDate", SqlDbType.Date, 0, "BusDate");
+                ShceduleAdapter.UpdateCommand.Parameters.Add("@DepartureTime", SqlDbType.DateTime, 0, "DepartureTime");
+                ShceduleAdapter.UpdateCommand.Parameters.Add("@Fare", SqlDbType.Decimal, 0, "Fare");
+                ShceduleAdapter.UpdateCommand.Parameters.Add("@Origin", SqlDbType.VarChar, 50, "Origin");
+                ShceduleAdapter.UpdateCommand.Parameters.Add("@Destination", SqlDbType.VarChar, 50, "Destination");
+            }
+            catch (Exception ex)
             {
-                CommandText = DELETE_SCHEDULE,
-                CommandType = CommandType.StoredProcedure,
-                Connection = this.connection
-            };
-            ShceduleAdapter.DeleteCommand.Parameters.Add("@ScheduleID", SqlDbType.Int, 0, "ScheduleID");
-            //===================[Update]=========================
-            ShceduleAdapter.UpdateCommand = new SqlCommand()
-            {
-                CommandText = UPDATE_SCHEDULE,
-                CommandType = CommandType.StoredProcedure,
-                Connection = this.connection
-            };
-            ShceduleAdapter.UpdateCommand.Parameters.Add("ScheduleID", SqlDbType.Int, 0, "ScheduleID");
-            ShceduleAdapter.UpdateCommand.Parameters.Add("@BusID", SqlDbType.Int, 0, "BusID");
-            ShceduleAdapter.UpdateCommand.Parameters.Add("@BusDate", SqlDbType.Date, 0, "BusDate");
-            ShceduleAdapter.UpdateCommand.Parameters.Add("@DepartureTime", SqlDbType.DateTime, 0, "DepartureTime");
-            ShceduleAdapter.UpdateCommand.Parameters.Add("@Fare", SqlDbType.Decimal, 0, "Fare");
-            ShceduleAdapter.UpdateCommand.Parameters.Add("@Origin", SqlDbType.VarChar, 50, "Origin");
-            ShceduleAdapter.UpdateCommand.Parameters.Add("@Destination", SqlDbType.VarChar, 50, "Destination");
+                MessageBox.Show($"Error in SetUpCommand: {ex.Message}");
+            }
         }
+
         private void BindingControl()
         {
             txtBusID.DataBindings.Add(new Binding("Text", ShceduleBindingSource, "BusID"));
@@ -88,6 +99,7 @@ namespace Final
             txtOrigin.DataBindings.Add(new Binding("Text", ShceduleBindingSource, "Origin"));
             txtBusDate.DataBindings.Add(new Binding("Text", ShceduleBindingSource, "BusDate"));
         }
+
         private void Shcedule_Load(object sender, EventArgs e)
         {
             datasetbackup = dataSet.Copy();
@@ -95,28 +107,38 @@ namespace Final
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.ShceduleBindingSource.AddNew();
-            txtScheduleID.Text = "Auto increament";
+            ShceduleBindingSource.AddNew();
+            txtScheduleID.Text = "Auto increment";
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtScheduleID.Text) ||
-                string.IsNullOrEmpty(txtBusID.Text) ||
-                string.IsNullOrEmpty(txtDepartureTime.Text) ||
-                string.IsNullOrEmpty(txtDestination.Text) ||
-                string.IsNullOrEmpty(txtFare.Text) ||
-                string.IsNullOrEmpty(txtOrigin.Text))
+            try
             {
-                MessageBox.Show("Please fill all TextBox Before Save!!");
-                return;
+                if (
+                    string.IsNullOrEmpty(txtBusID.Text) ||
+                    string.IsNullOrEmpty(txtDepartureTime.Text) ||
+                    string.IsNullOrEmpty(txtDestination.Text) ||
+                    string.IsNullOrEmpty(txtFare.Text) ||
+                    string.IsNullOrEmpty(txtOrigin.Text)
+                    )
+                {
+                    MessageBox.Show("Please fill all TextBox Before Save!!");
+                    return;
+                }
+                else
+                {
+                    ShceduleBindingSource.EndEdit();
+                    int rowsUpdated = ShceduleAdapter.Update(dataSet, VIEW_SHCEDULE_INFO);
+                    MessageBox.Show($"{rowsUpdated} record(s) updated successfully.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                this.ShceduleBindingSource.EndEdit();
-                ShceduleAdapter.Update(dataSet, VIEW_SHCEDULE_INFO);
+                MessageBox.Show($"Error while saving: {ex.Message}");
             }
         }
+
         private void txtDelete_Click(object sender, EventArgs e)
         {
             try
@@ -125,36 +147,51 @@ namespace Final
                 ShceduleAdapter.Update(dataSet, VIEW_SHCEDULE_INFO);
                 datasetbackup.Merge(dataSet);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Date Empty Can't Delete");
+                MessageBox.Show($"Data empty, can't delete: {ex.Message}");
             }
         }
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            dataSet.Tables[VIEW_SHCEDULE_INFO].Clear();
-            if (!string.IsNullOrWhiteSpace(txtSearch.Text))
+            try
             {
-                ShceduleAdapter.SelectCommand = new SqlCommand()
+                dataSet.Tables[VIEW_SHCEDULE_INFO].Clear();
+                if (!string.IsNullOrWhiteSpace(txtSearch.Text))
                 {
-                    CommandText = SEARCH_SCHEDULE,
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = this.connection
-                };
-                ShceduleAdapter.SelectCommand.Parameters.Add("@Search", SqlDbType.VarChar, 50);
-                ShceduleAdapter.SelectCommand.Parameters["@Search"].Value = txtSearch.Text;
-                ShceduleAdapter.Fill(dataSet, VIEW_SHCEDULE_INFO);
+                    ShceduleAdapter.SelectCommand = new SqlCommand()
+                    {
+                        CommandText = SEARCH_SCHEDULE,
+                        CommandType = CommandType.StoredProcedure,
+                        Connection = connection
+                    };
+                    ShceduleAdapter.SelectCommand.Parameters.Add("@Search", SqlDbType.VarChar, 50);
+                    ShceduleAdapter.SelectCommand.Parameters["@Search"].Value = txtSearch.Text;
+                    connection.Open();
+                    ShceduleAdapter.Fill(dataSet, VIEW_SHCEDULE_INFO);
+                    connection.Close();
+                }
+                else
+                {
+                    dataSet.Merge(datasetbackup);
+                }
             }
-            else
+            catch (Exception ex)
             {
-
-                dataSet.Merge(datasetbackup);
+                MessageBox.Show($"Error while searching: {ex.Message}");
             }
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ShceduleBindingSource.CancelEdit();
             dataSet.RejectChanges();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
