@@ -169,5 +169,6 @@
   <ItemGroup>
     <None Include="Resources\maximize-icon-2048x2048-nvv4tn33.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
