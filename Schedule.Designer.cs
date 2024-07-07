@@ -404,7 +404,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "Schedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Shcedule";
+            this.Text = "Schedule";
             this.Load += new System.EventHandler(this.Shcedule_Load);
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
