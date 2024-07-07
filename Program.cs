@@ -16,8 +16,8 @@ namespace Final
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Bus());
 
-            Application.Run(new Form2());
         }
     }
 }
