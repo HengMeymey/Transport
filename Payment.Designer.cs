@@ -41,7 +41,6 @@ namespace Final
             this.label11 = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnLogOut = new System.Windows.Forms.Button();
             this.txtPaidAmount = new System.Windows.Forms.TextBox();
             this.txtMajorID = new System.Windows.Forms.TextBox();
             this.txtStuID = new System.Windows.Forms.TextBox();
@@ -138,7 +137,7 @@ namespace Final
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(616, 77);
+            this.label11.Location = new System.Drawing.Point(885, 77);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(91, 22);
             this.label11.TabIndex = 11;
@@ -146,30 +145,23 @@ namespace Final
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(621, 181);
+            this.btnInsert.Location = new System.Drawing.Point(890, 181);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(172, 47);
+            this.btnInsert.Size = new System.Drawing.Size(112, 47);
             this.btnInsert.TabIndex = 12;
             this.btnInsert.Text = "Add";
             this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(621, 254);
+            this.btnUpdate.Location = new System.Drawing.Point(1028, 181);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(172, 47);
+            this.btnUpdate.Size = new System.Drawing.Size(112, 47);
             this.btnUpdate.TabIndex = 13;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.Location = new System.Drawing.Point(621, 329);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(172, 47);
-            this.btnLogOut.TabIndex = 15;
-            this.btnLogOut.Text = "Clear";
-            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // txtPaidAmount
             // 
@@ -208,7 +200,7 @@ namespace Final
             // 
             // txtStaffName
             // 
-            this.txtStaffName.Location = new System.Drawing.Point(783, 72);
+            this.txtStaffName.Location = new System.Drawing.Point(1052, 72);
             this.txtStaffName.Name = "txtStaffName";
             this.txtStaffName.Size = new System.Drawing.Size(226, 29);
             this.txtStaffName.TabIndex = 23;
@@ -264,7 +256,7 @@ namespace Final
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(616, 119);
+            this.label9.Location = new System.Drawing.Point(885, 119);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(83, 22);
             this.label9.TabIndex = 34;
@@ -272,16 +264,16 @@ namespace Final
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(783, 119);
+            this.textBox3.Location = new System.Drawing.Point(1052, 119);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(226, 29);
             this.textBox3.TabIndex = 35;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(621, 404);
+            this.button1.Location = new System.Drawing.Point(1166, 181);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 47);
+            this.button1.Size = new System.Drawing.Size(112, 47);
             this.button1.TabIndex = 36;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
@@ -297,9 +289,9 @@ namespace Final
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(177, 422);
+            this.textBox4.Location = new System.Drawing.Point(217, 422);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(144, 29);
+            this.textBox4.Size = new System.Drawing.Size(104, 29);
             this.textBox4.TabIndex = 38;
             // 
             // dgvPay
@@ -313,14 +305,14 @@ namespace Final
             this.dgvPay.ReadOnly = true;
             this.dgvPay.RowHeadersWidth = 62;
             this.dgvPay.RowTemplate.Height = 28;
-            this.dgvPay.Size = new System.Drawing.Size(997, 140);
+            this.dgvPay.Size = new System.Drawing.Size(1270, 140);
             this.dgvPay.TabIndex = 0;
             // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1023, 629);
+            this.ClientSize = new System.Drawing.Size(1295, 629);
             this.Controls.Add(this.dgvPay);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label1);
@@ -328,7 +320,6 @@ namespace Final
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtStaffName);
-            this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label11);
@@ -376,7 +367,6 @@ namespace Final
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.TextBox txtPaidAmount;
         private System.Windows.Forms.TextBox txtMajorID;
         private System.Windows.Forms.TextBox txtStuID;
