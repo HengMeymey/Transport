@@ -38,7 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -46,7 +45,6 @@
             this.txtBusNO = new System.Windows.Forms.TextBox();
             this.txtBusModel = new System.Windows.Forms.TextBox();
             this.txtTotalSeats = new System.Windows.Forms.TextBox();
-            this.txtSeatnumber = new System.Windows.Forms.TextBox();
             this.txtBookedSeats = new System.Windows.Forms.TextBox();
             this.txtAvailableSeats = new System.Windows.Forms.TextBox();
             this.txtDefaultFarr = new System.Windows.Forms.TextBox();
@@ -161,16 +159,6 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Bus Model";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1114, 175);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 37);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "SeatNumber";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -185,7 +173,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1114, 237);
+            this.label8.Location = new System.Drawing.Point(1114, 169);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(135, 37);
             this.label8.TabIndex = 10;
@@ -195,7 +183,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1114, 305);
+            this.label9.Location = new System.Drawing.Point(1114, 232);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 37);
             this.label9.TabIndex = 11;
@@ -233,17 +221,9 @@
             this.txtTotalSeats.Size = new System.Drawing.Size(253, 32);
             this.txtTotalSeats.TabIndex = 22;
             // 
-            // txtSeatnumber
-            // 
-            this.txtSeatnumber.Location = new System.Drawing.Point(1275, 169);
-            this.txtSeatnumber.Multiline = true;
-            this.txtSeatnumber.Name = "txtSeatnumber";
-            this.txtSeatnumber.Size = new System.Drawing.Size(253, 32);
-            this.txtSeatnumber.TabIndex = 23;
-            // 
             // txtBookedSeats
             // 
-            this.txtBookedSeats.Location = new System.Drawing.Point(1275, 237);
+            this.txtBookedSeats.Location = new System.Drawing.Point(1275, 175);
             this.txtBookedSeats.Multiline = true;
             this.txtBookedSeats.Name = "txtBookedSeats";
             this.txtBookedSeats.Size = new System.Drawing.Size(253, 32);
@@ -259,7 +239,7 @@
             // 
             // txtDefaultFarr
             // 
-            this.txtDefaultFarr.Location = new System.Drawing.Point(1275, 305);
+            this.txtDefaultFarr.Location = new System.Drawing.Point(1283, 237);
             this.txtDefaultFarr.Multiline = true;
             this.txtDefaultFarr.Name = "txtDefaultFarr";
             this.txtDefaultFarr.Size = new System.Drawing.Size(253, 32);
@@ -381,7 +361,6 @@
             this.Controls.Add(this.txtDefaultFarr);
             this.Controls.Add(this.txtAvailableSeats);
             this.Controls.Add(this.txtBookedSeats);
-            this.Controls.Add(this.txtSeatnumber);
             this.Controls.Add(this.txtTotalSeats);
             this.Controls.Add(this.txtBusModel);
             this.Controls.Add(this.txtBusNO);
@@ -389,7 +368,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -418,7 +396,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -426,7 +403,6 @@
         private System.Windows.Forms.TextBox txtBusNO;
         private System.Windows.Forms.TextBox txtBusModel;
         private System.Windows.Forms.TextBox txtTotalSeats;
-        private System.Windows.Forms.TextBox txtSeatnumber;
         private System.Windows.Forms.TextBox txtBookedSeats;
         private System.Windows.Forms.TextBox txtAvailableSeats;
         private System.Windows.Forms.TextBox txtDefaultFarr;

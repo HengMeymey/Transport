@@ -42,7 +42,6 @@ namespace Final
             txtBusNO.Text = string.Empty;
             txtDefaultFarr.Text = string.Empty;
             txtTotalSeats.Text = string.Empty;
-            txtSeatnumber.Text = string.Empty;
             txtBookedSeats.Text = string.Empty;
             txtBusModel.Text = string.Empty;
         }
@@ -61,7 +60,6 @@ namespace Final
         private void btnInsert_Click(object sender, EventArgs e)
         {
            
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -75,7 +73,6 @@ namespace Final
                     command.Parameters.AddWithValue("@BusNo", txtBusNO.Text);
                     command.Parameters.AddWithValue("@BusModel", txtBusModel.Text);
                     command.Parameters.AddWithValue("@TotalSeat", int.Parse(txtTotalSeats.Text));
-                    command.Parameters.AddWithValue("@SeatNumber", int.Parse(txtSeatnumber.Text));
                     command.Parameters.AddWithValue("@BookedSeats", int.Parse(txtBookedSeats.Text));
                     command.Parameters.AddWithValue("@AvailableSeats", int.Parse(txtAvailableSeats.Text));
                     command.Parameters.AddWithValue("@DefaultFare", decimal.Parse(txtDefaultFarr.Text));
@@ -90,7 +87,6 @@ namespace Final
                     txtBusNO.Text = string.Empty;
                     txtDefaultFarr.Text = string.Empty;
                     txtTotalSeats.Text = string.Empty;
-                    txtSeatnumber.Text = string.Empty;
                     txtBookedSeats.Text = string.Empty;
                     txtBusModel.Text = string.Empty;
                     PopulateDataGridView();
@@ -108,8 +104,6 @@ namespace Final
             int busID;
             if (int.TryParse(txtID.Text, out busID))
             {
-               
-
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     try
@@ -131,7 +125,6 @@ namespace Final
                         txtBusNO.Text = string.Empty;
                         txtDefaultFarr.Text = string.Empty;
                         txtTotalSeats.Text = string.Empty;
-                        txtSeatnumber.Text = string.Empty;
                         txtBookedSeats.Text = string.Empty;
                         txtBusModel.Text = string.Empty;
                         MessageBox.Show("Data deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -155,8 +148,6 @@ namespace Final
             int busID;
             if (int.TryParse(txtID.Text, out busID))
             {
-              
-
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     try
@@ -172,7 +163,6 @@ namespace Final
                         command.Parameters.AddWithValue("@BusNo", txtBusNO.Text);
                         command.Parameters.AddWithValue("@BusModel", txtBusModel.Text);
                         command.Parameters.AddWithValue("@TotalSeat", int.Parse(txtTotalSeats.Text));
-                        command.Parameters.AddWithValue("@SeatNumber", int.Parse(txtSeatnumber.Text));
                         command.Parameters.AddWithValue("@BookedSeats", int.Parse(txtBookedSeats.Text));
                         command.Parameters.AddWithValue("@AvailableSeats", int.Parse(txtAvailableSeats.Text));
                         command.Parameters.AddWithValue("@DefaultFare", decimal.Parse(txtDefaultFarr.Text));
@@ -205,7 +195,6 @@ namespace Final
                 txtBusNO.Text = selectedRow.Cells["BusNo"].Value.ToString();
                 txtBusModel.Text = selectedRow.Cells["BusModel"].Value.ToString();
                 txtTotalSeats.Text = selectedRow.Cells["TotalSeat"].Value.ToString();
-                txtSeatnumber.Text = selectedRow.Cells["SeatNumber"].Value.ToString();
                 txtBookedSeats.Text = selectedRow.Cells["BookedSeats"].Value.ToString();
                 txtAvailableSeats.Text = selectedRow.Cells["AvailableSeats"].Value.ToString();
                 txtDefaultFarr.Text = selectedRow.Cells["DefaultFare"].Value.ToString();
@@ -213,15 +202,13 @@ namespace Final
         }
         private void PopulateDataGridView()
         {
-           
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
                     Console.WriteLine("Connection successful!");
-                    SqlCommand command = new SqlCommand("SELECT * FROM dbo.tblBus", connection);
+                    SqlCommand command = new SqlCommand("SELECT BusID,BusType,BusNo,BusModel,TotalSeat,BookedSeats,AvailableSeats,DefaultFare FROM dbo.tblBus", connection);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
@@ -247,7 +234,7 @@ namespace Final
                 {
                     connection.Open();
                     Console.WriteLine("Connection successful!");
-                    string query = "SELECT * FROM dbo.tblBus";
+                    string query = "SELECT BusID,BusType,BusNo,BusModel,TotalSeat,BookedSeats,AvailableSeats,DefaultFare FROM dbo.tblBus";
                     SqlCommand command = new SqlCommand(query, connection);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
@@ -267,7 +254,6 @@ namespace Final
             int busID;
             if (int.TryParse(txtsearch.Text, out busID))
             {
-               
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -290,7 +276,6 @@ namespace Final
                             txtBusNO.Text = firstRow["BusNo"].ToString();
                             txtBusModel.Text = firstRow["BusModel"].ToString();
                             txtTotalSeats.Text = firstRow["TotalSeat"].ToString();
-                            txtSeatnumber.Text = firstRow["SeatNumber"].ToString();
                             txtBookedSeats.Text = firstRow["BookedSeats"].ToString();
                             txtAvailableSeats.Text = firstRow["AvailableSeats"].ToString();
                             txtDefaultFarr.Text = firstRow["DefaultFare"].ToString();
