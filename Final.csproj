@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -46,23 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Compile Include="Baggage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Baggage.Designer.cs">
       <DependentUpon>Baggage.cs</DependentUpon>
     </Compile>
->>>>>>> main
     <Compile Include="Bus.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Bus.Designer.cs">
       <DependentUpon>Bus.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-=======
     <Compile Include="BusType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,7 +70,6 @@
     <Compile Include="Customer.Designer.cs">
       <DependentUpon>Customer.cs</DependentUpon>
     </Compile>
->>>>>>> main
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,11 +96,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <EmbeddedResource Include="Bus.resx">
       <DependentUpon>Bus.cs</DependentUpon>
     </EmbeddedResource>
-=======
     <Compile Include="Schedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,7 +111,6 @@
     <Compile Include="Staff.Designer.cs">
       <DependentUpon>Staff.cs</DependentUpon>
     </Compile>
->>>>>>> main
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

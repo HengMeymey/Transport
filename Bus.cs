@@ -15,6 +15,7 @@ namespace Final
 {
     public partial class Bus : Form
     {
+        string connectionString = "Data Source=localhost;Initial Catalog=dboTransportation;Integrated Security=True;";
         public Bus()
         {
             InitializeComponent();
@@ -56,7 +57,7 @@ namespace Final
         {
 
         }
-        string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
+        
         private void btnInsert_Click(object sender, EventArgs e)
         {
            
@@ -239,7 +240,6 @@ namespace Final
 
         private void Bus_Load(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
