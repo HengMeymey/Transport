@@ -5,9 +5,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using Newtonsoft.Json;
+
 
 namespace Final
 {
@@ -105,7 +109,7 @@ namespace Final
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            
+
 
             // Call the stored procedure to update the payment
             //using (SqlConnection connection = new SqlConnection("YourConnectionStringHere"))
@@ -187,5 +191,88 @@ namespace Final
                 }
             }
         }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            // Ensure there's a selected row
+            if (dgvPay.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a row to print.");
+                return;
+            }
+
+            // Get the selected row
+            DataGridViewRow selectedRow = dgvPay.SelectedRows[0];
+
+            // Create an object to hold the row data
+            var rowData = new
+            {
+                PaymentID = selectedRow.Cells["PaymentID"].Value,
+                CusName = selectedRow.Cells["CusName"].Value,
+                Contact = selectedRow.Cells["Contact"].Value,
+                BusNo = selectedRow.Cells["BusNo"].Value,
+                StaffName = selectedRow.Cells["StaffName"].Value,
+                StaffPosition = selectedRow.Cells["StaffPosition"].Value,
+                SeatNumber = selectedRow.Cells["SeatNumber"].Value,
+                Origin = selectedRow.Cells["Origin"].Value,
+                Destination = selectedRow.Cells["Destination"].Value,
+                Date = selectedRow.Cells["Date"].Value,
+                DepartureTime = selectedRow.Cells["DepartureTime"].Value,
+                TotalFare = selectedRow.Cells["TotalFare"].Value,
+                IsPaid = selectedRow.Cells["isPaid"].Value
+            };
+
+            // Convert the row data to JSON
+            var jsonData = JsonConvert.SerializeObject(new { data = rowData });
+
+            // Send the JSON data to jsReport Online to generate the PDF
+            var pdf = await GeneratePdfAsync(jsonData);
+
+            // Save the PDF to a file
+            if (pdf != null)
+            {
+                var saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "PDF files (*.pdf)|*.pdf",
+                    Title = "Save PDF File",
+                    FileName = "Report.pdf"
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllBytes(saveFileDialog.FileName, pdf);
+                    MessageBox.Show("PDF saved successfully.");
+                }
+            }
+        }
+
+        private async Task<byte[]> GeneratePdfAsync(string jsonData)
+        {
+            using (var client = new HttpClient())
+            {
+                var url = "https://mey.jsreportonline.net/studio/templates/EMzTLUq"; // Replace with your jsReport Online server URL
+                var templateName = "Transport"; // Replace with your jsReport template name or ID
+
+                var requestContent = new StringContent(
+                    JsonConvert.SerializeObject(new
+                    {
+                        template = new { name = templateName },
+                        data = JsonConvert.DeserializeObject(jsonData)
+                    }), Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(url, requestContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsByteArrayAsync();
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while generating the PDF: " + response.ReasonPhrase);
+                    return null;
+                }
+            }
+        }
+
     }
 }

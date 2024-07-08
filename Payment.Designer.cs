@@ -59,6 +59,7 @@ namespace Final
             this.label1 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.dgvPay = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -308,11 +309,22 @@ namespace Final
             this.dgvPay.Size = new System.Drawing.Size(1270, 140);
             this.dgvPay.TabIndex = 0;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1161, 407);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(117, 44);
+            this.button2.TabIndex = 39;
+            this.button2.Text = "Print";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 629);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.dgvPay);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label1);
@@ -385,5 +397,6 @@ namespace Final
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox4;
         private DataGridView dgvPay;
+        private Button button2;
     }
 }
