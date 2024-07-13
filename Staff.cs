@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Final.Bus;
 
 namespace Final
 {
@@ -29,7 +23,7 @@ namespace Final
         {
 
         }
-     
+
         private void PopulateDataGridView()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -65,11 +59,13 @@ namespace Final
                 {
                     connection.Open();
                     Console.WriteLine("Connection successful!");
-                    string query = "SELECT * FROM dbo.tblStaff";
+                    string query = "GetStaffDetails";
                     SqlCommand command = new SqlCommand(query, connection);
+                    command.CommandType = CommandType.StoredProcedure;
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
+
                     dataGridView1.DataSource = dataTable;
                 }
                 catch (Exception ex)
@@ -82,8 +78,9 @@ namespace Final
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            int staffID;
-            if (int.TryParse(txtSearch.Text, out staffID))
+            string staffName = txtSearch.Text.Trim();
+
+            if (!string.IsNullOrEmpty(staffName))
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -92,68 +89,49 @@ namespace Final
                         connection.Open();
                         Console.WriteLine("Connection successful!");
 
-                        SqlCommand command = new SqlCommand("dbo.spGetStaffData", connection);
+                        SqlCommand command = new SqlCommand("dbo.spSearchStaffByName", connection);
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@StaffID", staffID);
+                        command.Parameters.AddWithValue("@Name", staffName);
                         SqlDataReader reader = command.ExecuteReader();
+
                         if (reader.HasRows)
                         {
                             DataTable dataTable = new DataTable();
                             dataTable.Load(reader);
                             DataRow firstRow = dataTable.Rows[0];
+
                             txtID.Text = firstRow["StaffID"].ToString();
-                            txtNameEN.Text = firstRow["NameEN"].ToString();
+                            txtNameEN.Text = firstRow["Name"].ToString();
                             txtNameKH.Text = firstRow["NameKH"].ToString();
                             txtCon.Text = firstRow["Contact"].ToString();
                             cbGen.Text = firstRow["Gender"].ToString();
                             txtEma.Text = firstRow["Email"].ToString();
-
-                            // Load the image from the stored file path
-                            string avatarPath = firstRow["Avatar"].ToString();
-                            Console.WriteLine("Avatar path from database: " + avatarPath);
-
-                            if (!string.IsNullOrEmpty(avatarPath))
+                            cbAdd.Text = firstRow["Address"].ToString();
+                            txtBir.Text = firstRow["BirthDate"] != DBNull.Value ? Convert.ToDateTime(firstRow["BirthDate"]).ToString("MM/dd/yyyy") : string.Empty;
+                            cbPos.Text = firstRow["StaffPosition"].ToString();
+                            txtwork.Text = firstRow["IsStoppedWork"].ToString();
+                            if (firstRow["Avatar"] != DBNull.Value)
                             {
-                                try
+                                byte[] avatarData = (byte[])firstRow["Avatar"];
+                                using (MemoryStream ms = new MemoryStream(avatarData))
                                 {
-                                    if (File.Exists(avatarPath))
-                                    {
-                                        using (var tempImage = Image.FromFile(avatarPath))
-                                        {
-                                            pbAvtar.Image = new Bitmap(tempImage);
-                                        }
-                                        Console.WriteLine("Image loaded successfully from: " + avatarPath);
-                                    }
-                                    else
-                                    {
-                                        pbAvtar.Image = null; // Clear the image if the path is invalid
-                                        Console.WriteLine("File does not exist: " + avatarPath);
-                                    }
-                                }
-                                catch (Exception imgEx)
-                                {
-                                    pbAvtar.Image = null; // Clear the image if there is an error loading it
-                                    Console.WriteLine("Error loading image: " + imgEx.Message);
+                                    pbAvtar.Image = Image.FromStream(ms);
                                 }
                             }
                             else
                             {
-                                pbAvtar.Image = null; // Clear the image if the path is null or empty
-                                Console.WriteLine("Avatar path is empty.");
+                                pbAvtar.Image = null;
                             }
-
-                            cbAdd.Text = firstRow["Address"].ToString();
-                            txtBir.Text = firstRow["BirthDate"].ToString();
-                            cbPos.Text = firstRow["Position"].ToString();
-                            txtwork.Text = firstRow["isStoppedWork"].ToString();
-
                             dataGridView1.DataSource = dataTable;
+                            dataGridView1.Columns.Clear();
+                            dataGridView1.Columns.Add("Name", "Name");
+                            dataGridView1.Columns["Name"].DataPropertyName = "Name"; // Ensure mapping to the correct column in the DataTable
                         }
                         else
                         {
                             MessageBox.Show("Staff not found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ClearInputFields(); // Clear UI elements if staff not found
-                            pbAvtar.Image = null; // Clear the PictureBox when no staff found
+                            ClearInputFields();
+                            pbAvtar.Image = null;
                         }
 
                         reader.Close();
@@ -172,32 +150,69 @@ namespace Final
             }
             else
             {
-                MessageBox.Show("Please enter a valid Staff ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ClearInputFields(); // Clear UI elements for invalid input
-                pbAvtar.Image = null; // Clear the PictureBox for invalid input
+                ClearInputFields();
+                pbAvtar.Image = null;
             }
         }
 
-
-
+        private void ClearInputFields()
+        {
+            txtNameEN.Clear();
+            // Clear other input fields as necessary
+            // txtID.Clear();
+            // txtNameKH.Clear();
+            // txtCon.Clear();
+            // cbGen.SelectedIndex = -1;
+            // txtEma.Clear();
+            // cbAdd.Clear();
+            // txtBir.Clear();
+            // cbPos.Clear();
+            // txtwork.Clear();
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+
                 txtID.Text = selectedRow.Cells["StaffID"].Value.ToString();
-                txtNameEN.Text = selectedRow.Cells["NameEN"].Value.ToString();
+                txtNameEN.Text = selectedRow.Cells["Name"].Value.ToString();
                 txtNameKH.Text = selectedRow.Cells["NameKH"].Value.ToString();
                 txtCon.Text = selectedRow.Cells["Contact"].Value.ToString();
                 cbGen.Text = selectedRow.Cells["Gender"].Value.ToString();
                 txtEma.Text = selectedRow.Cells["Email"].Value.ToString();
-                pbAvtar.Text = selectedRow.Cells["Avatar"].Value.ToString();
                 cbAdd.Text = selectedRow.Cells["Address"].Value.ToString();
-                txtBir.Text = selectedRow.Cells["BirthDate"].Value.ToString();
-                cbPos.Text = selectedRow.Cells["Position"].Value.ToString();
-                txtwork.Text = selectedRow.Cells["IsStopedWork"].Value.ToString();
 
+                if (selectedRow.Cells["BirthDate"].Value != DBNull.Value)
+                {
+                    txtBir.Text = Convert.ToDateTime(selectedRow.Cells["BirthDate"].Value).ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    txtBir.Text = string.Empty;
+                }
+
+                cbPos.Text = selectedRow.Cells["StaffPosition"].Value.ToString();
+                txtwork.Text = selectedRow.Cells["IsStoppedWork"].Value.ToString();
+
+                if (selectedRow.Cells["Avatar"].Value != DBNull.Value)
+                {
+                    byte[] avatarData = (byte[])selectedRow.Cells["Avatar"].Value;
+                    using (MemoryStream ms = new MemoryStream(avatarData))
+                    {
+                        pbAvtar.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    pbAvtar.Image = null;
+                }
+
+                dataGridView1.DataSource = null;
+                dataGridView1.Columns.Clear();
+                dataGridView1.Columns.Add("Name", "Name");
+                dataGridView1.Columns["Name"].DataPropertyName = "Name";
             }
         }
 
@@ -211,7 +226,7 @@ namespace Final
 
                     SqlCommand command = new SqlCommand("dbo.spInsertStaff", connection);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@NameEN", txtNameEN.Text);
+                    command.Parameters.AddWithValue("@Name", txtNameEN.Text);
                     command.Parameters.AddWithValue("@NameKH", txtNameKH.Text);
                     command.Parameters.AddWithValue("@Contact", txtCon.Text);
                     command.Parameters.AddWithValue("@Gender", cbGen.Text);
@@ -229,45 +244,28 @@ namespace Final
                         return;
                     }
 
-                    command.Parameters.AddWithValue("@Position", cbPos.Text);
-                    command.Parameters.AddWithValue("@isStopedWork", Convert.ToBoolean(txtwork.Text));
+                    command.Parameters.AddWithValue("@StaffPosition", cbPos.Text);
+                    command.Parameters.AddWithValue("@IsStoppedWork", Convert.ToBoolean(txtwork.Text));
 
-                    // Save image to disk if a file path is selected
-                    string avatarPath = pbAvtar.Tag != null ? pbAvtar.Tag.ToString() : string.Empty;
-                    if (!string.IsNullOrEmpty(avatarPath) && File.Exists(avatarPath))
+                    // Convert avatar image to byte array
+                    byte[] avatarData = null;
+                    if (pbAvtar.Image != null)
                     {
-                        // Define destination folder
-                        string destinationFolder = @"D:\Transport\images\";
-                        // Ensure the destination folder exists
-                        if (!Directory.Exists(destinationFolder))
+                        using (MemoryStream ms = new MemoryStream())
                         {
-                            Directory.CreateDirectory(destinationFolder);
+                            pbAvtar.Image.Save(ms, pbAvtar.Image.RawFormat);
+                            avatarData = ms.ToArray();
                         }
-
-                        // Get the file name from the path
-                        string fileName = Path.GetFileName(avatarPath);
-
-                        // Construct the full path where the image will be saved
-                        string destinationPath = Path.Combine(destinationFolder, fileName);
-
-                        // Copy the image file to the destination folder
-                        File.Copy(avatarPath, destinationPath, true);
-
-                        // Update the avatarPath to the saved destinationPath
-                        avatarPath = destinationPath;
                     }
 
-                    // Insert avatarPath into the database
-                    command.Parameters.AddWithValue("@Avatar", avatarPath);
+                    command.Parameters.AddWithValue("@Avatar", (object)avatarData ?? DBNull.Value);
 
-                    // Execute the SQL command
                     command.ExecuteNonQuery();
 
                     MessageBox.Show("Data inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    ClearInputFields(); // Helper method to clear input fields
-
-                    PopulateDataGridView(); // Refresh DataGridView if needed
+                    ClearInputFields();
+                    PopulateDataGridView();
                 }
                 catch (Exception ex)
                 {
@@ -276,7 +274,6 @@ namespace Final
                 }
             }
         }
-
 
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
@@ -294,13 +291,13 @@ namespace Final
                         command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.AddWithValue("@StaffID", staffID);
-                        command.Parameters.AddWithValue("@NameEN", txtNameEN.Text);
+                        command.Parameters.AddWithValue("@Name", txtNameEN.Text);
                         command.Parameters.AddWithValue("@NameKH", txtNameKH.Text);
                         command.Parameters.AddWithValue("@Contact", txtCon.Text);
-                        command.Parameters.AddWithValue("@Gender", (cbGen.Text));
-                        command.Parameters.AddWithValue("@Email", (txtEma.Text));
-                        command.Parameters.AddWithValue("@Avatar", (pbAvtar.Text));
-                        command.Parameters.AddWithValue("@Address", (cbAdd.Text));
+                        command.Parameters.AddWithValue("@Gender", cbGen.Text);
+                        command.Parameters.AddWithValue("@Email", txtEma.Text);
+                        command.Parameters.AddWithValue("@Address", cbAdd.Text);
+
                         DateTime birthDate;
                         if (DateTime.TryParseExact(txtBir.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate))
                         {
@@ -311,13 +308,26 @@ namespace Final
                             MessageBox.Show("Invalid BirthDate format! Please enter the date in MM/dd/yyyy format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                        command.Parameters.AddWithValue("@Position", (cbPos.Text));
-                        command.Parameters.AddWithValue("@isStopedWork", txtwork.Text);
+
+                        command.Parameters.AddWithValue("@StaffPosition", cbPos.Text);
+                        command.Parameters.AddWithValue("@IsStoppedWork", Convert.ToBoolean(txtwork.Text));
+
+                        // Convert avatar image to byte array
+                        byte[] avatarData = null;
+                        if (pbAvtar.Image != null)
+                        {
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                pbAvtar.Image.Save(ms, pbAvtar.Image.RawFormat);
+                                avatarData = ms.ToArray();
+                            }
+                        }
+
+                        command.Parameters.AddWithValue("@Avatar", (object)avatarData ?? DBNull.Value);
 
                         command.ExecuteNonQuery();
                         PopulateDataGridView();
                         MessageBox.Show("Data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     catch (Exception ex)
                     {
@@ -328,7 +338,7 @@ namespace Final
             }
             else
             {
-                MessageBox.Show("Please enter a valid Bus ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a valid Staff ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -388,7 +398,7 @@ namespace Final
             }
             else
             {
-                MessageBox.Show("Please enter a valid Bus ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a valid Staff ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -398,42 +408,29 @@ namespace Final
             var mainToOpen = new MainForm();
             mainToOpen.Show();
         }
+
         private void pbAvtar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private byte[] imageData = null;
+
+        private void btnUpload_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
 
             if (open.ShowDialog() == DialogResult.OK)
             {
-                // Load the image into the PictureBox
+                // Load the image into the picture box
                 pbAvtar.Image = new Bitmap(open.FileName);
-
-                // Store the file path in the Tag property for later use
                 pbAvtar.Tag = open.FileName;
+
+                // Convert the image file to a byte array
+                imageData = File.ReadAllBytes(open.FileName);
             }
         }
 
-
-
-        private void ClearInputFields()
-        {
-            txtID.Text = string.Empty;
-            txtNameEN.Text = string.Empty;
-            txtNameKH.Text = string.Empty;
-            txtCon.Text = string.Empty;
-            cbGen.Text = string.Empty;
-            txtEma.Text = string.Empty;
-            cbAdd.Text = string.Empty;
-            txtBir.Text = string.Empty;
-            cbPos.Text = string.Empty;
-            txtwork.Text = string.Empty;
-            pbAvtar.Image = null;
-            pbAvtar.Tag = null;
-        }
-
-        private void btnUpload_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -54,14 +54,13 @@
             this.txtCon = new System.Windows.Forms.TextBox();
             this.txtEma = new System.Windows.Forms.TextBox();
             this.txtBir = new System.Windows.Forms.TextBox();
-            this.txtwork = new System.Windows.Forms.TextBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
             this.cbPos = new System.Windows.Forms.ComboBox();
             this.cbAdd = new System.Windows.Forms.ComboBox();
             this.btnUpload = new System.Windows.Forms.Button();
+            this.txtwork = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvtar)).BeginInit();
             this.SuspendLayout();
@@ -93,7 +92,11 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Location = new System.Drawing.Point(32, 83);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -125,12 +128,14 @@
             // 
             // txtID
             // 
+            this.txtID.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(480, 35);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(204, 29);
             this.txtID.TabIndex = 41;
+            this.txtID.Text = "  ";
             // 
             // label5
             // 
@@ -167,14 +172,14 @@
             // 
             // cbGen
             // 
-            this.cbGen.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGen.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F);
             this.cbGen.FormattingEnabled = true;
             this.cbGen.Items.AddRange(new object[] {
-            "Female",
-            "Male"});
+            "ស្រី",
+            "ប្រុស"});
             this.cbGen.Location = new System.Drawing.Point(479, 222);
             this.cbGen.Name = "cbGen";
-            this.cbGen.Size = new System.Drawing.Size(206, 30);
+            this.cbGen.Size = new System.Drawing.Size(206, 27);
             this.cbGen.TabIndex = 50;
             // 
             // label8
@@ -305,10 +310,10 @@
             // txtNameKH
             // 
             this.txtNameKH.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNameKH.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameKH.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F);
             this.txtNameKH.Location = new System.Drawing.Point(481, 125);
             this.txtNameKH.Name = "txtNameKH";
-            this.txtNameKH.Size = new System.Drawing.Size(204, 29);
+            this.txtNameKH.Size = new System.Drawing.Size(204, 28);
             this.txtNameKH.TabIndex = 70;
             // 
             // txtCon
@@ -338,43 +343,25 @@
             this.txtBir.Size = new System.Drawing.Size(204, 29);
             this.txtBir.TabIndex = 74;
             // 
-            // txtwork
-            // 
-            this.txtwork.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtwork.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtwork.Location = new System.Drawing.Point(480, 485);
-            this.txtwork.Name = "txtwork";
-            this.txtwork.Size = new System.Drawing.Size(204, 29);
-            this.txtwork.TabIndex = 76;
-            // 
             // txtSearch
             // 
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Khmer OS Muol Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(90, 42);
+            this.txtSearch.Location = new System.Drawing.Point(32, 42);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(242, 31);
+            this.txtSearch.Size = new System.Drawing.Size(300, 31);
             this.txtSearch.TabIndex = 77;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // textBox12
-            // 
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox12.Font = new System.Drawing.Font("Khmer OS Muol Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(29, 43);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(60, 28);
-            this.textBox12.TabIndex = 78;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 50);
+            this.label1.Location = new System.Drawing.Point(32, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(109, 13);
             this.label1.TabIndex = 79;
-            this.label1.Text = "Search";
+            this.label1.Text = "Search (Staff Name) :";
             // 
             // btnInsert
             // 
@@ -390,39 +377,76 @@
             // 
             // cbPos
             // 
-            this.cbPos.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPos.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F);
             this.cbPos.FormattingEnabled = true;
             this.cbPos.Items.AddRange(new object[] {
-            "Female",
-            "Male"});
+            "អ្នកគិតលុយ",
+            "បម្រើសេវាកម្ម",
+            "អ្នកគ្រប់គ្រង",
+            "អ្នកថែទាំ",
+            "អ្នកសម្អាត"});
             this.cbPos.Location = new System.Drawing.Point(481, 433);
             this.cbPos.Name = "cbPos";
-            this.cbPos.Size = new System.Drawing.Size(206, 30);
+            this.cbPos.Size = new System.Drawing.Size(206, 27);
             this.cbPos.TabIndex = 81;
             // 
             // cbAdd
             // 
-            this.cbAdd.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAdd.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F);
             this.cbAdd.FormattingEnabled = true;
             this.cbAdd.Items.AddRange(new object[] {
-            "Female",
-            "Male"});
+            "កំពត",
+            "កែប",
+            "ព្រះសីហនុ",
+            "កំពង់ឆ្នាំង",
+            "ពោធ៍សាត់",
+            "បាត់ដំបង",
+            "ប៉ៃលិន",
+            "បន្ទាយមានជ័យ",
+            "សៀមរាប",
+            "កំពង់ធំ",
+            "កំពង់ចាម",
+            "ព្រៃវែង",
+            "ស្វាយរៀង",
+            "តាកែវ",
+            "កណ្ដាល",
+            "កំពង់ស្ពឺ",
+            "ក្រចេះ",
+            "ស្ទឹងត្រែង",
+            "មណ្ឌលគិរី",
+            "ព្រះវិហារ",
+            "រតនៈគិរី",
+            "កោះកុង",
+            "ឧត្ដរមានជ័យ"});
             this.cbAdd.Location = new System.Drawing.Point(478, 325);
             this.cbAdd.Name = "cbAdd";
-            this.cbAdd.Size = new System.Drawing.Size(206, 30);
+            this.cbAdd.Size = new System.Drawing.Size(206, 27);
             this.cbAdd.TabIndex = 82;
             // 
             // btnUpload
             // 
+            this.btnUpload.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpload.Font = new System.Drawing.Font("Khmer OS Muol Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpload.Location = new System.Drawing.Point(734, 206);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(100, 27);
             this.btnUpload.TabIndex = 83;
-            this.btnUpload.Text = "upload image";
-            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Text = "Select Photo";
+            this.btnUpload.UseVisualStyleBackColor = false;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // txtwork
+            // 
+            this.txtwork.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F);
+            this.txtwork.FormattingEnabled = true;
+            this.txtwork.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.txtwork.Location = new System.Drawing.Point(481, 486);
+            this.txtwork.Name = "txtwork";
+            this.txtwork.Size = new System.Drawing.Size(206, 27);
+            this.txtwork.TabIndex = 84;
             // 
             // Staff
             // 
@@ -430,14 +454,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(871, 594);
+            this.Controls.Add(this.txtwork);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.cbAdd);
             this.Controls.Add(this.cbPos);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox12);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.txtwork);
             this.Controls.Add(this.txtBir);
             this.Controls.Add(this.txtEma);
             this.Controls.Add(this.txtCon);
@@ -499,13 +522,12 @@
         private System.Windows.Forms.TextBox txtCon;
         private System.Windows.Forms.TextBox txtEma;
         private System.Windows.Forms.TextBox txtBir;
-        private System.Windows.Forms.TextBox txtwork;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.ComboBox cbPos;
         private System.Windows.Forms.ComboBox cbAdd;
         private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.ComboBox txtwork;
     }
 }
