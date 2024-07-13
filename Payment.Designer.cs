@@ -41,25 +41,25 @@ namespace Final
             this.label11 = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.txtPaidAmount = new System.Windows.Forms.TextBox();
-            this.txtMajorID = new System.Windows.Forms.TextBox();
-            this.txtStuID = new System.Windows.Forms.TextBox();
-            this.txtStaffID = new System.Windows.Forms.TextBox();
-            this.txtStaffPosition = new System.Windows.Forms.TextBox();
+            this.txtCustomer = new System.Windows.Forms.TextBox();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtDepartureTime = new System.Windows.Forms.TextBox();
+            this.txtOrigin = new System.Windows.Forms.TextBox();
+            this.txtDestination = new System.Windows.Forms.TextBox();
             this.txtStaffName = new System.Windows.Forms.TextBox();
-            this.dtpPayment = new System.Windows.Forms.DateTimePicker();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.checkPaid = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBusNo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtSeatNo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtStaffPosition = new System.Windows.Forms.TextBox();
+            this.btnExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.dgvPay = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,6 +125,7 @@ namespace Final
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label8
             // 
@@ -150,7 +151,7 @@ namespace Final
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(112, 47);
             this.btnInsert.TabIndex = 12;
-            this.btnInsert.Text = "Add";
+            this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -164,40 +165,40 @@ namespace Final
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // txtPaidAmount
+            // txtCustomer
             // 
-            this.txtPaidAmount.Location = new System.Drawing.Point(218, 62);
-            this.txtPaidAmount.Name = "txtPaidAmount";
-            this.txtPaidAmount.Size = new System.Drawing.Size(263, 29);
-            this.txtPaidAmount.TabIndex = 18;
+            this.txtCustomer.Location = new System.Drawing.Point(218, 62);
+            this.txtCustomer.Name = "txtCustomer";
+            this.txtCustomer.Size = new System.Drawing.Size(263, 29);
+            this.txtCustomer.TabIndex = 18;
             // 
-            // txtMajorID
+            // txtPhoneNumber
             // 
-            this.txtMajorID.Location = new System.Drawing.Point(217, 21);
-            this.txtMajorID.Name = "txtMajorID";
-            this.txtMajorID.Size = new System.Drawing.Size(263, 29);
-            this.txtMajorID.TabIndex = 19;
+            this.txtPhoneNumber.Location = new System.Drawing.Point(217, 21);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(263, 29);
+            this.txtPhoneNumber.TabIndex = 19;
             // 
-            // txtStuID
+            // txtDepartureTime
             // 
-            this.txtStuID.Location = new System.Drawing.Point(218, 163);
-            this.txtStuID.Name = "txtStuID";
-            this.txtStuID.Size = new System.Drawing.Size(263, 29);
-            this.txtStuID.TabIndex = 20;
+            this.txtDepartureTime.Location = new System.Drawing.Point(218, 163);
+            this.txtDepartureTime.Name = "txtDepartureTime";
+            this.txtDepartureTime.Size = new System.Drawing.Size(263, 29);
+            this.txtDepartureTime.TabIndex = 20;
             // 
-            // txtStaffID
+            // txtOrigin
             // 
-            this.txtStaffID.Location = new System.Drawing.Point(218, 212);
-            this.txtStaffID.Name = "txtStaffID";
-            this.txtStaffID.Size = new System.Drawing.Size(263, 29);
-            this.txtStaffID.TabIndex = 21;
+            this.txtOrigin.Location = new System.Drawing.Point(218, 212);
+            this.txtOrigin.Name = "txtOrigin";
+            this.txtOrigin.Size = new System.Drawing.Size(263, 29);
+            this.txtOrigin.TabIndex = 21;
             // 
-            // txtStaffPosition
+            // txtDestination
             // 
-            this.txtStaffPosition.Location = new System.Drawing.Point(218, 260);
-            this.txtStaffPosition.Name = "txtStaffPosition";
-            this.txtStaffPosition.Size = new System.Drawing.Size(263, 29);
-            this.txtStaffPosition.TabIndex = 22;
+            this.txtDestination.Location = new System.Drawing.Point(218, 260);
+            this.txtDestination.Name = "txtDestination";
+            this.txtDestination.Size = new System.Drawing.Size(263, 29);
+            this.txtDestination.TabIndex = 22;
             // 
             // txtStaffName
             // 
@@ -206,12 +207,12 @@ namespace Final
             this.txtStaffName.Size = new System.Drawing.Size(226, 29);
             this.txtStaffName.TabIndex = 23;
             // 
-            // dtpPayment
+            // dtpDate
             // 
-            this.dtpPayment.Location = new System.Drawing.Point(217, 117);
-            this.dtpPayment.Name = "dtpPayment";
-            this.dtpPayment.Size = new System.Drawing.Size(263, 29);
-            this.dtpPayment.TabIndex = 24;
+            this.dtpDate.Location = new System.Drawing.Point(217, 117);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(263, 29);
+            this.dtpDate.TabIndex = 24;
             // 
             // checkPaid
             // 
@@ -231,12 +232,12 @@ namespace Final
             this.label13.TabIndex = 30;
             this.label13.Text = "Bus No                 :";
             // 
-            // textBox1
+            // txtBusNo
             // 
-            this.textBox1.Location = new System.Drawing.Point(218, 311);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 29);
-            this.textBox1.TabIndex = 31;
+            this.txtBusNo.Location = new System.Drawing.Point(218, 311);
+            this.txtBusNo.Name = "txtBusNo";
+            this.txtBusNo.Size = new System.Drawing.Size(263, 29);
+            this.txtBusNo.TabIndex = 31;
             // 
             // label14
             // 
@@ -247,12 +248,12 @@ namespace Final
             this.label14.TabIndex = 32;
             this.label14.Text = "Seat No                : ";
             // 
-            // textBox2
+            // txtSeatNo
             // 
-            this.textBox2.Location = new System.Drawing.Point(218, 365);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(263, 29);
-            this.textBox2.TabIndex = 33;
+            this.txtSeatNo.Location = new System.Drawing.Point(218, 365);
+            this.txtSeatNo.Name = "txtSeatNo";
+            this.txtSeatNo.Size = new System.Drawing.Size(263, 29);
+            this.txtSeatNo.TabIndex = 33;
             // 
             // label9
             // 
@@ -263,21 +264,21 @@ namespace Final
             this.label9.TabIndex = 34;
             this.label9.Text = "Staff Position :";
             // 
-            // textBox3
+            // txtStaffPosition
             // 
-            this.textBox3.Location = new System.Drawing.Point(1052, 119);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(226, 29);
-            this.textBox3.TabIndex = 35;
+            this.txtStaffPosition.Location = new System.Drawing.Point(1052, 119);
+            this.txtStaffPosition.Name = "txtStaffPosition";
+            this.txtStaffPosition.Size = new System.Drawing.Size(226, 29);
+            this.txtStaffPosition.TabIndex = 35;
             // 
-            // button1
+            // btnExit
             // 
-            this.button1.Location = new System.Drawing.Point(1166, 181);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 47);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnExit.Location = new System.Drawing.Point(1166, 181);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(112, 47);
+            this.btnExit.TabIndex = 36;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -288,12 +289,12 @@ namespace Final
             this.label1.TabIndex = 37;
             this.label1.Text = "Paid  :";
             // 
-            // textBox4
+            // txtPrice
             // 
-            this.textBox4.Location = new System.Drawing.Point(217, 422);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(104, 29);
-            this.textBox4.TabIndex = 38;
+            this.txtPrice.Location = new System.Drawing.Point(217, 422);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(104, 29);
+            this.txtPrice.TabIndex = 38;
             // 
             // dgvPay
             // 
@@ -309,44 +310,44 @@ namespace Final
             this.dgvPay.Size = new System.Drawing.Size(1270, 140);
             this.dgvPay.TabIndex = 0;
             // 
-            // button2
+            // btnPrint
             // 
-            this.button2.Location = new System.Drawing.Point(1161, 407);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 44);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "Print";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnPrint.Location = new System.Drawing.Point(1161, 407);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(117, 44);
+            this.btnPrint.TabIndex = 39;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.button2_Click);
             // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1295, 629);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dgvPay);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.txtStaffPosition);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtStaffName);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtSeatNo);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBusNo);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.checkPaid);
-            this.Controls.Add(this.dtpPayment);
-            this.Controls.Add(this.txtStaffPosition);
-            this.Controls.Add(this.txtStaffID);
-            this.Controls.Add(this.txtStuID);
-            this.Controls.Add(this.txtMajorID);
-            this.Controls.Add(this.txtPaidAmount);
+            this.Controls.Add(this.dtpDate);
+            this.Controls.Add(this.txtDestination);
+            this.Controls.Add(this.txtOrigin);
+            this.Controls.Add(this.txtDepartureTime);
+            this.Controls.Add(this.txtPhoneNumber);
+            this.Controls.Add(this.txtCustomer);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -379,24 +380,24 @@ namespace Final
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.TextBox txtPaidAmount;
-        private System.Windows.Forms.TextBox txtMajorID;
-        private System.Windows.Forms.TextBox txtStuID;
-        private System.Windows.Forms.TextBox txtStaffID;
-        private System.Windows.Forms.TextBox txtStaffPosition;
+        private System.Windows.Forms.TextBox txtCustomer;
+        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.TextBox txtDepartureTime;
+        private System.Windows.Forms.TextBox txtOrigin;
+        private System.Windows.Forms.TextBox txtDestination;
         private System.Windows.Forms.TextBox txtStaffName;
-        private System.Windows.Forms.DateTimePicker dtpPayment;
+        private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.CheckBox checkPaid;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBusNo;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtSeatNo;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtStaffPosition;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtPrice;
         private DataGridView dgvPay;
-        private Button button2;
+        private Button btnPrint;
     }
 }

@@ -59,17 +59,17 @@ namespace Final
             if (dgvPay.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvPay.SelectedRows[0];
-                dtpPayment.Value = Convert.ToDateTime(selectedRow.Cells["Date"].Value);
-                txtStaffID.Text = selectedRow.Cells["Origin"].Value.ToString();
-                txtMajorID.Text = selectedRow.Cells["Contact"].Value.ToString();
-                txtPaidAmount.Text = selectedRow.Cells["CusName"].Value.ToString();
-                txtStaffPosition.Text = selectedRow.Cells["Destination"].Value.ToString();
-                txtStuID.Text = selectedRow.Cells["DepartureTime"].Value.ToString();
+                dtpDate.Value = Convert.ToDateTime(selectedRow.Cells["Date"].Value);
+                txtOrigin.Text = selectedRow.Cells["Origin"].Value.ToString();
+                txtPhoneNumber.Text = selectedRow.Cells["Contact"].Value.ToString();
+                txtCustomer.Text = selectedRow.Cells["CusName"].Value.ToString();
+                txtDestination.Text = selectedRow.Cells["Destination"].Value.ToString();
+                txtDepartureTime.Text = selectedRow.Cells["DepartureTime"].Value.ToString();
                 txtStaffName.Text = selectedRow.Cells["StaffName"].Value.ToString();
-                textBox3.Text = selectedRow.Cells["StaffPosition"].Value.ToString();
-                textBox1.Text = selectedRow.Cells["BusNo"].Value.ToString();
-                textBox2.Text = selectedRow.Cells["SeatNumber"].Value.ToString();
-                textBox4.Text = selectedRow.Cells["TotalFare"].Value.ToString();
+                txtStaffPosition.Text = selectedRow.Cells["StaffPosition"].Value.ToString();
+                txtBusNo.Text = selectedRow.Cells["BusNo"].Value.ToString();
+                txtSeatNo.Text = selectedRow.Cells["SeatNumber"].Value.ToString();
+                txtPrice.Text = selectedRow.Cells["TotalFare"].Value.ToString();
                 checkPaid.Checked = Convert.ToBoolean(selectedRow.Cells["isPaid"].Value);
             }
         }
@@ -144,53 +144,71 @@ namespace Final
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            // Retrieve values from the textboxes and controls
-            int paymentId = GetPaymentIdFromSelectedRow(); // Implement this method to get the Payment Id from the selected row
-            //int cusId = Convert.ToInt32(txtCusId.Text);
-            string cusName = txtPaidAmount.Text;
-            string contact = txtMajorID.Text;
-            //int busId = Convert.ToInt32(txtBusId.Text);
-            string busNo = textBox1.Text;
-            //int staffId = Convert.ToInt32(txtStaffId.Text);
-            string staffName = txtStaffName.Text;
-            //int bookingDetailsId = Convert.ToInt32(txtBookingDetailsId.Text);
-            int seatNumber = Convert.ToInt32(textBox2.Text);
-            string origin = txtStaffID.Text;
-            string destination = txtStaffPosition.Text;
-            string date = dtpPayment.Text;
-            string departureTime = txtStuID.Text;
-            decimal totalFare = Convert.ToDecimal(textBox4.Text);
-            DateTime createdDate = DateTime.Now; // Assuming the current date is the creation date
-            bool isPaid = checkPaid.Checked ? true : false;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            int paymentId = Convert.ToInt32(dgvPay.SelectedRows[0].Cells["PaymentId"].Value);
+
+            // Validate user input (optional, add checks for empty fields or invalid formats)
+            if (String.IsNullOrEmpty(txtCustomer.Text) || String.IsNullOrEmpty(txtBusNo.Text) ||
+                String.IsNullOrEmpty(txtStaffName.Text) || String.IsNullOrEmpty(txtStaffPosition.Text))
             {
-                using (SqlCommand command = new SqlCommand("dbo.spUpdatePayment", connection))
+                MessageBox.Show("Please fill in all required fields.");
+                return;
+            }
+
+            // Prepare data for the stored procedure
+            string cusName = txtCustomer.Text;
+            string contact = txtPhoneNumber.Text;
+            string busNo = txtBusNo.Text;
+            string staffName = txtStaffName.Text;
+            string staffPosition = txtStaffPosition.Text;
+            int seatNumber = Convert.ToInt32(txtSeatNo.Text);
+            string origin = txtOrigin.Text;
+            string destination = txtDestination.Text;
+            DateTime date = dtpDate.Value;
+            DateTime? departureTime = null; // Set to null if DepartureTime is empty
+            if (!String.IsNullOrEmpty(txtDepartureTime.Text))
+            {
+                departureTime = Convert.ToDateTime(txtDepartureTime.Text);
+            }
+            decimal totalFare = Convert.ToDecimal(txtPrice.Text);
+            bool isPaid = checkPaid.Checked;
+
+            // Call the stored procedure to update payment
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString)) // Replace with your connection string
                 {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("spUpdatePayment", connection);
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("@PaymentId", paymentId);
-                    //command.Parameters.AddWithValue("@CusId", cusId);
                     command.Parameters.AddWithValue("@CusName", cusName);
                     command.Parameters.AddWithValue("@Contact", contact);
-                    //command.Parameters.AddWithValue("@BusId", busId);
                     command.Parameters.AddWithValue("@BusNo", busNo);
-                    //command.Parameters.AddWithValue("@StaffId", staffId);
                     command.Parameters.AddWithValue("@StaffName", staffName);
-                    //command.Parameters.AddWithValue("@BookingDetailsId", bookingDetailsId);
+                    command.Parameters.AddWithValue("@StaffPosition", staffPosition);
                     command.Parameters.AddWithValue("@SeatNumber", seatNumber);
                     command.Parameters.AddWithValue("@Origin", origin);
                     command.Parameters.AddWithValue("@Destination", destination);
                     command.Parameters.AddWithValue("@Date", date);
                     command.Parameters.AddWithValue("@DepartureTime", departureTime);
                     command.Parameters.AddWithValue("@TotalFare", totalFare);
-                    command.Parameters.AddWithValue("@CreatedDate", createdDate);
                     command.Parameters.AddWithValue("@isPaid", isPaid);
 
-                    connection.Open();
                     command.ExecuteNonQuery();
+
+                    MessageBox.Show("Payment updated successfully!");
+
+                    // Refresh data grid (optional)
+                    LoadPaymentData();
                 }
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error updating payment: " + ex.Message);
+            }
         }
+
 
         private async void button2_Click(object sender, EventArgs e)
         {
@@ -274,5 +292,32 @@ namespace Final
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            // Retrieve the contact number from a textbox (assuming you have a textbox named txtContact)
+            string contact = txtPhoneNumber.Text.Trim();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("spSearchPaymentsByContact", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Contact", contact);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Assuming you have a DataGridView named dataGridViewPayments
+                    dgvPay.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
     }
 }
