@@ -300,6 +300,7 @@ namespace Final
             // 
             this.dgvPay.AllowUserToAddRows = false;
             this.dgvPay.AllowUserToDeleteRows = false;
+            this.dgvPay.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPay.Location = new System.Drawing.Point(12, 474);
             this.dgvPay.Margin = new System.Windows.Forms.Padding(4);
