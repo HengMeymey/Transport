@@ -102,10 +102,10 @@
             // 
             this.exit.BackColor = System.Drawing.SystemColors.Menu;
             this.exit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exit.Font = new System.Drawing.Font("Adobe Devanagari", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exit.Location = new System.Drawing.Point(425, 308);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(133, 39);
+            this.exit.Size = new System.Drawing.Size(138, 51);
             this.exit.TabIndex = 7;
             this.exit.Text = "Exit";
             this.exit.UseVisualStyleBackColor = false;
@@ -115,10 +115,10 @@
             // 
             this.Login.BackColor = System.Drawing.SystemColors.Menu;
             this.Login.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Login.Font = new System.Drawing.Font("Adobe Devanagari", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login.Location = new System.Drawing.Point(729, 308);
             this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(133, 39);
+            this.Login.Size = new System.Drawing.Size(136, 51);
             this.Login.TabIndex = 8;
             this.Login.Text = "Login";
             this.Login.UseVisualStyleBackColor = false;
@@ -128,10 +128,10 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.Menu;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Adobe Devanagari", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(579, 308);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 39);
+            this.button1.Size = new System.Drawing.Size(132, 51);
             this.button1.TabIndex = 9;
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = false;
