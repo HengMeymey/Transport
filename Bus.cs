@@ -15,14 +15,14 @@ namespace Final
 {
     public partial class Bus : Form
     {
+        string connectionString = "Data Source=localhost;Initial Catalog=dboTransportation;Integrated Security=True;";
         public Bus()
         {
             InitializeComponent();
             txtID.ReadOnly = true;
             dataGridView1.CellClick += dataGridView1_CellContentClick;
+            txtsearch.KeyDown += txtsearch_KeyDown;
         }
-
-        string connectionString = "Data Source=localhost;Initial Catalog=dboTransportation;Integrated Security=True;";
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -38,13 +38,9 @@ namespace Final
         {
             txtID.Text = string.Empty;
             txtBusType.Text = string.Empty;
-            txtAvailableSeats.Text = string.Empty;
-            txtBookedSeats.Text = string.Empty;
             txtBusNO.Text = string.Empty;
             txtDefaultFarr.Text = string.Empty;
             txtTotalSeats.Text = string.Empty;
-            txtSeatnumber.Text = string.Empty;
-            txtBookedSeats.Text = string.Empty;
             txtBusModel.Text = string.Empty;
         }
 
@@ -58,6 +54,7 @@ namespace Final
         {
 
         }
+        
         private void btnInsert_Click(object sender, EventArgs e)
         {
            
@@ -74,9 +71,6 @@ namespace Final
                     command.Parameters.AddWithValue("@BusNo", txtBusNO.Text);
                     command.Parameters.AddWithValue("@BusModel", txtBusModel.Text);
                     command.Parameters.AddWithValue("@TotalSeat", int.Parse(txtTotalSeats.Text));
-                    command.Parameters.AddWithValue("@SeatNumber", int.Parse(txtSeatnumber.Text));
-                    command.Parameters.AddWithValue("@BookedSeats", int.Parse(txtBookedSeats.Text));
-                    command.Parameters.AddWithValue("@AvailableSeats", int.Parse(txtAvailableSeats.Text));
                     command.Parameters.AddWithValue("@DefaultFare", decimal.Parse(txtDefaultFarr.Text));
 
                     command.ExecuteNonQuery();
@@ -84,13 +78,9 @@ namespace Final
                     MessageBox.Show("Data inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtID.Text = string.Empty;
                     txtBusType.Text = string.Empty;
-                    txtAvailableSeats.Text = string.Empty;
-                    txtBookedSeats.Text = string.Empty;
                     txtBusNO.Text = string.Empty;
                     txtDefaultFarr.Text = string.Empty;
                     txtTotalSeats.Text = string.Empty;
-                    txtSeatnumber.Text = string.Empty;
-                    txtBookedSeats.Text = string.Empty;
                     txtBusModel.Text = string.Empty;
                     PopulateDataGridView();
                 }
@@ -99,51 +89,6 @@ namespace Final
                     Console.WriteLine("Error: " + ex.Message);
                     MessageBox.Show("Error occurred while inserting data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            int busID;
-            if (int.TryParse(txtID.Text, out busID))
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    try
-                    {
-                        connection.Open();
-                        Console.WriteLine("Connection successful!");
-
-                        SqlCommand command = new SqlCommand("dbo.spDeleteBus", connection);
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@BusID", busID);
-
-                        command.ExecuteNonQuery();
-                        PopulateDataGridView();
-                        txtID.Text = string.Empty;
-                        txtBusType.Text = string.Empty;
-                        txtAvailableSeats.Text = string.Empty;
-                        txtBookedSeats.Text = string.Empty;
-                        txtBusNO.Text = string.Empty;
-                        txtDefaultFarr.Text = string.Empty;
-                        txtTotalSeats.Text = string.Empty;
-                        txtSeatnumber.Text = string.Empty;
-                        txtBookedSeats.Text = string.Empty;
-                        txtBusModel.Text = string.Empty;
-                        MessageBox.Show("Data deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error: " + ex.Message);
-                        MessageBox.Show("Error occurred while deleting data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter a valid Bus ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -167,9 +112,6 @@ namespace Final
                         command.Parameters.AddWithValue("@BusNo", txtBusNO.Text);
                         command.Parameters.AddWithValue("@BusModel", txtBusModel.Text);
                         command.Parameters.AddWithValue("@TotalSeat", int.Parse(txtTotalSeats.Text));
-                        command.Parameters.AddWithValue("@SeatNumber", int.Parse(txtSeatnumber.Text));
-                        command.Parameters.AddWithValue("@BookedSeats", int.Parse(txtBookedSeats.Text));
-                        command.Parameters.AddWithValue("@AvailableSeats", int.Parse(txtAvailableSeats.Text));
                         command.Parameters.AddWithValue("@DefaultFare", decimal.Parse(txtDefaultFarr.Text));
 
                         command.ExecuteNonQuery();
@@ -200,9 +142,6 @@ namespace Final
                 txtBusNO.Text = selectedRow.Cells["BusNo"].Value.ToString();
                 txtBusModel.Text = selectedRow.Cells["BusModel"].Value.ToString();
                 txtTotalSeats.Text = selectedRow.Cells["TotalSeat"].Value.ToString();
-                txtSeatnumber.Text = selectedRow.Cells["SeatNumber"].Value.ToString();
-                txtBookedSeats.Text = selectedRow.Cells["BookedSeats"].Value.ToString();
-                txtAvailableSeats.Text = selectedRow.Cells["AvailableSeats"].Value.ToString();
                 txtDefaultFarr.Text = selectedRow.Cells["DefaultFare"].Value.ToString();
             }
         }
@@ -214,7 +153,7 @@ namespace Final
                 {
                     connection.Open();
                     Console.WriteLine("Connection successful!");
-                    SqlCommand command = new SqlCommand("SELECT * FROM dbo.tblBus", connection);
+                    SqlCommand command = new SqlCommand("dbo,spGetBusDatas", connection);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
@@ -234,15 +173,13 @@ namespace Final
         private void Bus_Load(object sender, EventArgs e)
         {
 
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
                     Console.WriteLine("Connection successful!");
-                    string query = "SELECT * FROM dbo.tblBus";
-                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlCommand command = new SqlCommand("dbo.spGetBusDatas", connection);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
@@ -256,57 +193,76 @@ namespace Final
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void SearchBusByBusNo(string busNo)
         {
-            int busID;
-            if (int.TryParse(txtsearch.Text, out busID))
+            if (string.IsNullOrEmpty(busNo))
             {
+                MessageBox.Show("Please enter a bus number.");
+                return;
+            }
 
+            try
+            {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    try
-                    {
-                        connection.Open();
-                        Console.WriteLine("Connection successful!");
+                    connection.Open();
 
-                        SqlCommand command = new SqlCommand("dbo.spGetBusData", connection);
+                    using (SqlCommand command = new SqlCommand("dbo.spSearchBusByBusNo", connection))
+                    {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@BusID", busID);
-                        SqlDataReader reader = command.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            DataTable dataTable = new DataTable();
-                            dataTable.Load(reader);
-                            DataRow firstRow = dataTable.Rows[0];
-                            txtID.Text = firstRow["BusID"].ToString();
-                            txtBusType.Text = firstRow["BusType"].ToString();
-                            txtBusNO.Text = firstRow["BusNo"].ToString();
-                            txtBusModel.Text = firstRow["BusModel"].ToString();
-                            txtTotalSeats.Text = firstRow["TotalSeat"].ToString();
-                            txtSeatnumber.Text = firstRow["SeatNumber"].ToString();
-                            txtBookedSeats.Text = firstRow["BookedSeats"].ToString();
-                            txtAvailableSeats.Text = firstRow["AvailableSeats"].ToString();
-                            txtDefaultFarr.Text = firstRow["DefaultFare"].ToString();
-                            dataGridView1.DataSource = dataTable;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Bus not found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        command.Parameters.AddWithValue("@BusNo", busNo);
 
-                        reader.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error: " + ex.Message);
-                        MessageBox.Show("Error occurred while querying data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                DataTable dataTable = new DataTable();
+                                dataTable.Load(reader);
+                                dataGridView1.DataSource = dataTable;
+                            }
+                            else
+                            {
+                                MessageBox.Show("No records found.");
+                            }
+                        }
                     }
                 }
             }
-            else
+            catch (SqlException sqlEx)
             {
-                MessageBox.Show("Please enter a valid Bus ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("SQL error occurred: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
+
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            string busNo = txtsearch.Text.Trim();
+            SearchBusByBusNo(busNo);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            string busNo = txtsearch.Text.Trim();
+            SearchBusByBusNo(busNo);
+        }
+
+        private void txtsearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string busNo = txtsearch.Text.Trim();
+                SearchBusByBusNo(busNo);
+                e.Handled = true;
+                e.SuppressKeyPress = true; // Prevents the beep sound on Enter key press
+            }
+        }
+
+
+
     }
 }
