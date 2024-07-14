@@ -103,7 +103,7 @@
             // GroupBox1
             // 
             this.GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GroupBox1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.GroupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.GroupBox1.Controls.Add(this.txtScheduleID);
             this.GroupBox1.Controls.Add(this.Label6);
             this.GroupBox1.Controls.Add(this.txtOrigin);
