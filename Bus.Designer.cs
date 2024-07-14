@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bus));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,22 +38,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBusType = new System.Windows.Forms.TextBox();
             this.txtBusNO = new System.Windows.Forms.TextBox();
             this.txtBusModel = new System.Windows.Forms.TextBox();
             this.txtTotalSeats = new System.Windows.Forms.TextBox();
-            this.txtBookedSeats = new System.Windows.Forms.TextBox();
-            this.txtAvailableSeats = new System.Windows.Forms.TextBox();
             this.txtDefaultFarr = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtsearch = new System.Windows.Forms.TextBox();
@@ -80,19 +74,19 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(40, 613);
+            this.dataGridView1.Location = new System.Drawing.Point(40, 514);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1488, 292);
+            this.dataGridView1.Size = new System.Drawing.Size(1038, 282);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -101,16 +95,17 @@
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Khmer Moul", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 565);
+            this.label1.Location = new System.Drawing.Point(40, 466);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 34);
             this.label1.TabIndex = 1;
             this.label1.Text = "Search";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Final.Properties.Resources.search__2_;
-            this.pictureBox1.Location = new System.Drawing.Point(655, 565);
+            this.pictureBox1.Location = new System.Drawing.Point(457, 461);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(36, 34);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -122,7 +117,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1114, 36);
+            this.label2.Location = new System.Drawing.Point(624, 239);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 37);
             this.label2.TabIndex = 4;
@@ -153,37 +148,17 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1114, 101);
+            this.label5.Location = new System.Drawing.Point(624, 304);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 37);
             this.label5.TabIndex = 7;
             this.label5.Text = "Bus Model";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(620, 237);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(150, 37);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "AvailableSeats";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1114, 169);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 37);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "BookedSeats";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1114, 232);
+            this.label9.Location = new System.Drawing.Point(624, 372);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 37);
             this.label9.TabIndex = 11;
@@ -191,7 +166,7 @@
             // 
             // txtBusType
             // 
-            this.txtBusType.Location = new System.Drawing.Point(1275, 35);
+            this.txtBusType.Location = new System.Drawing.Point(805, 239);
             this.txtBusType.Multiline = true;
             this.txtBusType.Name = "txtBusType";
             this.txtBusType.Size = new System.Drawing.Size(253, 32);
@@ -207,7 +182,7 @@
             // 
             // txtBusModel
             // 
-            this.txtBusModel.Location = new System.Drawing.Point(1275, 100);
+            this.txtBusModel.Location = new System.Drawing.Point(805, 304);
             this.txtBusModel.Multiline = true;
             this.txtBusModel.Name = "txtBusModel";
             this.txtBusModel.Size = new System.Drawing.Size(253, 32);
@@ -221,46 +196,19 @@
             this.txtTotalSeats.Size = new System.Drawing.Size(253, 32);
             this.txtTotalSeats.TabIndex = 22;
             // 
-            // txtBookedSeats
-            // 
-            this.txtBookedSeats.Location = new System.Drawing.Point(1275, 175);
-            this.txtBookedSeats.Multiline = true;
-            this.txtBookedSeats.Name = "txtBookedSeats";
-            this.txtBookedSeats.Size = new System.Drawing.Size(253, 32);
-            this.txtBookedSeats.TabIndex = 24;
-            // 
-            // txtAvailableSeats
-            // 
-            this.txtAvailableSeats.Location = new System.Drawing.Point(805, 237);
-            this.txtAvailableSeats.Multiline = true;
-            this.txtAvailableSeats.Name = "txtAvailableSeats";
-            this.txtAvailableSeats.Size = new System.Drawing.Size(253, 32);
-            this.txtAvailableSeats.TabIndex = 25;
-            // 
             // txtDefaultFarr
             // 
-            this.txtDefaultFarr.Location = new System.Drawing.Point(1283, 237);
+            this.txtDefaultFarr.Location = new System.Drawing.Point(805, 372);
             this.txtDefaultFarr.Multiline = true;
             this.txtDefaultFarr.Name = "txtDefaultFarr";
             this.txtDefaultFarr.Size = new System.Drawing.Size(253, 32);
             this.txtDefaultFarr.TabIndex = 26;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(929, 491);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(23, 37);
-            this.label10.TabIndex = 27;
-            this.label10.Text = " ";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1283, 562);
+            this.btnExit.Location = new System.Drawing.Point(972, 455);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(102, 38);
+            this.btnExit.Size = new System.Drawing.Size(106, 39);
             this.btnExit.TabIndex = 31;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -268,7 +216,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(1426, 560);
+            this.btnClear.Location = new System.Drawing.Point(861, 455);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(102, 40);
             this.btnClear.TabIndex = 32;
@@ -278,7 +226,7 @@
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(850, 562);
+            this.btnInsert.Location = new System.Drawing.Point(627, 455);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(102, 40);
             this.btnInsert.TabIndex = 33;
@@ -288,23 +236,13 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(1004, 561);
+            this.btnUpdate.Location = new System.Drawing.Point(744, 456);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(102, 38);
             this.btnUpdate.TabIndex = 34;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(1147, 562);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(102, 38);
-            this.btnDelete.TabIndex = 35;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label11
             // 
@@ -326,10 +264,10 @@
             // 
             // txtsearch
             // 
-            this.txtsearch.Location = new System.Drawing.Point(120, 565);
+            this.txtsearch.Location = new System.Drawing.Point(120, 466);
             this.txtsearch.Multiline = true;
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(529, 34);
+            this.txtsearch.Size = new System.Drawing.Size(315, 34);
             this.txtsearch.TabIndex = 38;
             // 
             // pictureBox2
@@ -337,7 +275,7 @@
             this.pictureBox2.Image = global::Final.Properties.Resources.photo_2024_06_22_14_29_17;
             this.pictureBox2.Location = new System.Drawing.Point(40, 30);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(516, 498);
+            this.pictureBox2.Size = new System.Drawing.Size(471, 379);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 39;
             this.pictureBox2.TabStop = false;
@@ -347,27 +285,21 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1678, 944);
+            this.ClientSize = new System.Drawing.Size(1130, 833);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txtsearch);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.txtDefaultFarr);
-            this.Controls.Add(this.txtAvailableSeats);
-            this.Controls.Add(this.txtBookedSeats);
             this.Controls.Add(this.txtTotalSeats);
             this.Controls.Add(this.txtBusModel);
             this.Controls.Add(this.txtBusNO);
             this.Controls.Add(this.txtBusType);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -396,22 +328,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBusType;
         private System.Windows.Forms.TextBox txtBusNO;
         private System.Windows.Forms.TextBox txtBusModel;
         private System.Windows.Forms.TextBox txtTotalSeats;
-        private System.Windows.Forms.TextBox txtBookedSeats;
-        private System.Windows.Forms.TextBox txtAvailableSeats;
         private System.Windows.Forms.TextBox txtDefaultFarr;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtsearch;
