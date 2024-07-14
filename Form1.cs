@@ -40,83 +40,83 @@ namespace Final
         /// </summary>
         private void InitializeComponent()
         {
-            dgvCus = new DataGridView();
-            btnRefresh = new Button();
-            btnCreate = new Button();
-            btnEdit = new Button();
-            btnDelete = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvCus).BeginInit();
-            SuspendLayout();
+            this.dgvCus = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCus)).BeginInit();
+            this.SuspendLayout();
             // 
-            // dgvStu
+            // dgvCus
             // 
-            dgvCus.AllowUserToAddRows = false;
-            dgvCus.AllowUserToDeleteRows = false;
-            dgvCus.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCus.Location = new Point(22, 61);
-            dgvCus.Margin = new Padding(4, 4, 4, 4);
-            dgvCus.Name = "dgvStu";
-            dgvCus.ReadOnly = true;
-            dgvCus.RowHeadersWidth = 51;
-            dgvCus.RowTemplate.Height = 29;
-            dgvCus.Size = new Size(942, 571);
-            dgvCus.TabIndex = 0;
+            this.dgvCus.AllowUserToAddRows = false;
+            this.dgvCus.AllowUserToDeleteRows = false;
+            this.dgvCus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCus.Location = new System.Drawing.Point(20, 68);
+            this.dgvCus.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dgvCus.Name = "dgvCus";
+            this.dgvCus.ReadOnly = true;
+            this.dgvCus.RowHeadersWidth = 51;
+            this.dgvCus.RowTemplate.Height = 29;
+            this.dgvCus.Size = new System.Drawing.Size(848, 438);
+            this.dgvCus.TabIndex = 0;
             // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(22, 15);
-            btnRefresh.Margin = new Padding(4, 4, 4, 4);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(118, 36);
-            btnRefresh.TabIndex = 1;
-            btnRefresh.Text = "Refresh";
-            btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Location = new System.Drawing.Point(20, 12);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(106, 29);
+            this.btnRefresh.TabIndex = 1;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
             // 
             // btnCreate
             // 
-            btnCreate.Location = new Point(564, 15);
-            btnCreate.Margin = new Padding(4, 4, 4, 4);
-            btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(118, 36);
-            btnCreate.TabIndex = 2;
-            btnCreate.Text = "Create";
-            btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Location = new System.Drawing.Point(508, 12);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(106, 29);
+            this.btnCreate.TabIndex = 2;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = true;
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(705, 15);
-            btnEdit.Margin = new Padding(4, 4, 4, 4);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(118, 36);
-            btnEdit.TabIndex = 3;
-            btnEdit.Text = "Edit";
-            btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Location = new System.Drawing.Point(634, 12);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(106, 29);
+            this.btnEdit.TabIndex = 3;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(848, 15);
-            btnDelete.Margin = new Padding(4, 4, 4, 4);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(118, 36);
-            btnDelete.TabIndex = 4;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(763, 12);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(106, 29);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // MainForm1
+            // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(976, 641);
-            Controls.Add(btnDelete);
-            Controls.Add(btnEdit);
-            Controls.Add(btnCreate);
-            Controls.Add(btnRefresh);
-            Controls.Add(dgvCus);
-            Margin = new Padding(4, 4, 4, 4);
-            Name = "Form1";
-            Text = "Customers";
-            ((System.ComponentModel.ISupportInitialize)dgvCus).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(878, 513);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.dgvCus);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Name = "Form1";
+            this.Text = "Customers";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCus)).EndInit();
+            this.ResumeLayout(false);
 
         }
 
