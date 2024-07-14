@@ -119,7 +119,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(287, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 24);
+            this.label1.Size = new System.Drawing.Size(71, 22);
             this.label1.TabIndex = 7;
             this.label1.Text = "ScheduleID";
             // 
@@ -128,7 +128,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(287, 135);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 24);
+            this.label2.Size = new System.Drawing.Size(42, 22);
             this.label2.TabIndex = 9;
             this.label2.Text = "BusID";
             // 
@@ -145,7 +145,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(287, 244);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 24);
+            this.label3.Size = new System.Drawing.Size(86, 22);
             this.label3.TabIndex = 13;
             this.label3.Text = "DepartureTime";
             // 
@@ -162,7 +162,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(287, 187);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 24);
+            this.label4.Size = new System.Drawing.Size(34, 22);
             this.label4.TabIndex = 11;
             this.label4.Text = "Date";
             // 
@@ -171,7 +171,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(287, 365);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 24);
+            this.label5.Size = new System.Drawing.Size(40, 22);
             this.label5.TabIndex = 17;
             this.label5.Text = "Origin";
             // 
@@ -188,7 +188,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(287, 305);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 24);
+            this.label6.Size = new System.Drawing.Size(34, 22);
             this.label6.TabIndex = 15;
             this.label6.Text = "Fare";
             // 
@@ -205,7 +205,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(287, 420);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 24);
+            this.label7.Size = new System.Drawing.Size(67, 22);
             this.label7.TabIndex = 19;
             this.label7.Text = "Destination";
             // 
@@ -228,7 +228,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 458);
+            this.ClientSize = new System.Drawing.Size(897, 473);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox8);

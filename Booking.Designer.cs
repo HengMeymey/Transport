@@ -77,6 +77,7 @@
             // 
             // dgvBooking
             // 
+            this.dgvBooking.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBooking.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvBooking.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvBooking.BorderStyle = System.Windows.Forms.BorderStyle.None;
