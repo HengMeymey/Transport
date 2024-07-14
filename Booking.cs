@@ -19,6 +19,10 @@ namespace Final
             InitializeComponent();
             txtID.ReadOnly = true;
             dgvBooking.CellClick += dgvBooking_CellContentClick;
+            cbBusNo.DropDown += ComboBox_DropDown;
+            cbSeatNumber.DropDown += ComboBox_DropDown;
+            cbStaffName.DropDown += ComboBox_DropDown;
+            cbStaffPosition.DropDown += ComboBox_DropDown;
         }
         private void dgvBooking_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -28,28 +32,202 @@ namespace Final
                 txtID.Text = selectedRow.Cells["BookingID"].Value.ToString();
                 txtCusName.Text = selectedRow.Cells["CusName"].Value.ToString();
                 txtContact.Text = selectedRow.Cells["Contact"].Value.ToString();
-                txtBusNo.Text = selectedRow.Cells["BusNo"].Value.ToString();
-                txtSeatNumber.Text = selectedRow.Cells["SeatNumber"].Value.ToString();
+                cbBusNo.Text = selectedRow.Cells["BusNo"].Value.ToString();
+                cbSeatNumber.Text = selectedRow.Cells["SeatNumber"].Value.ToString();
                 txtFare.Text = selectedRow.Cells["Fare"].Value.ToString();
                 txtOrigin.Text = selectedRow.Cells["Origin"].Value.ToString();
                 txtDestination.Text = selectedRow.Cells["Destination"].Value.ToString();
                 dateTimePicker1.Text = selectedRow.Cells["Date"].Value.ToString();
                 txtTime.Text = selectedRow.Cells["DepartureTime"].Value.ToString();
-                txtStaffName.Text = selectedRow.Cells["StaffName"].Value.ToString();
-                txtStaffPosition.Text = selectedRow.Cells["StaffPosition"].Value.ToString();
+                cbStaffName.Text = selectedRow.Cells["StaffName"].Value.ToString();
+                cbStaffPosition.Text = selectedRow.Cells["StaffPosition"].Value.ToString();
             }
         }
 
-        private void Booking_Load(object sender, EventArgs e)
+
+        private void LoadComboBoxData(ComboBox comboBox)
+        {
+            string storedProcedureName = string.Empty;
+            string displayMember = string.Empty;
+
+            switch (comboBox.Name)
+            {
+                case "cbBusNo":
+                    storedProcedureName = "spGetBusNos";
+                    displayMember = "BusNo";
+                    break;
+                case "cbSeatNumber":
+                    storedProcedureName = "spGetSeatNumbers";
+                    displayMember = "SeatNumber";
+                    break;
+                case "cbStaffName":
+                    storedProcedureName = "spGetStaffNames";
+                    displayMember = "StaffName";
+                    break;
+                case "cbStaffPosition":
+                    storedProcedureName = "spGetStaffPositions";
+                    displayMember = "StaffPosition";
+                    break;
+            }
+
+            if (!string.IsNullOrEmpty(storedProcedureName))
+            {
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+
+                            // Add parameters if necessary (e.g., for spGetSeatNumbers)
+                            if (storedProcedureName == "spGetSeatNumbers")
+                            {
+                                // Assuming cbBusNo.SelectedValue or cbBusNo.Text provides the BusNo
+                                command.Parameters.AddWithValue("@BusNo", cbBusNo.Text.Trim());
+                            }
+
+                            if (storedProcedureName == "spGetStaffPositions")
+                            {
+                                command.Parameters.AddWithValue("@StaffName", cbStaffName.Text.Trim());
+                            }
+
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                comboBox.Items.Clear();
+                                while (reader.Read())
+                                {
+                                    comboBox.Items.Add(reader[displayMember].ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlEx)
+                {
+                    MessageBox.Show("SQL error occurred: " + sqlEx.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
+
+
+
+        private void ClearTextBoxes()
+        {
+            // Clear all textboxes for new entry
+            txtCusName.Text = "";
+            txtContact.Text = "";
+            cbBusNo.Text = "";
+            cbSeatNumber.Text = "";
+            cbStaffName.Text = "";
+            cbStaffPosition.Text = "";
+            txtOrigin.Text = "";
+            txtDestination.Text = "";
+            dateTimePicker1.Text = "";
+            txtTime.Text = "";
+            txtFare.Text = "";
+        }
+
+        private void cbBusNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedBusNo = cbBusNo.Text.Trim();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("spGetSeatNumbers", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@BusNo", selectedBusNo);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            cbSeatNumber.Items.Clear();
+                            while (reader.Read())
+                            {
+                                cbSeatNumber.Items.Add(reader["SeatNumber"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show("SQL error occurred: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+
+        private void cbStaffName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadStaffPosition();
+        }
+
+        private void LoadStaffPosition()
+        {
+            string selectedStaffName = cbStaffName.Text.Trim();
+
+            if (!string.IsNullOrEmpty(selectedStaffName))
+            {
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand("spGetStaffPositions", connection))
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+                            command.Parameters.AddWithValue("@StaffName", selectedStaffName);
+
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    cbStaffPosition.Text = reader["StaffPosition"].ToString();
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlEx)
+                {
+                    MessageBox.Show("SQL error occurred: " + sqlEx.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
+
+
+
+        private void ComboBox_DropDown(object sender, EventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            if (comboBox != null)
+            {
+                LoadComboBoxData(comboBox);
+            }
+        }
+
+        private void LoadBookingData()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    // Open the connection
                     connection.Open();
-
-                    // Create a SqlCommand to execute the stored procedure
                     using (SqlCommand command = new SqlCommand("spGetAllBookings", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
@@ -69,6 +247,16 @@ namespace Final
                     MessageBox.Show("An error occurred: " + ex.Message);
                 }
             }
+        }
+
+        private void Booking_Load(object sender, EventArgs e)
+        {
+            LoadBookingData();
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            LoadBookingData();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -101,18 +289,17 @@ namespace Final
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            // Validate user input (optional)
             if (string.IsNullOrEmpty(txtCusName.Text) || string.IsNullOrEmpty(txtContact.Text) ||
-                string.IsNullOrEmpty(txtBusNo.Text) || !int.TryParse(txtSeatNumber.Text, out int seatNumber) ||
-                string.IsNullOrEmpty(txtStaffName.Text) || string.IsNullOrEmpty(txtStaffPosition.Text) ||
+                string.IsNullOrEmpty(cbBusNo.Text) || !int.TryParse(cbSeatNumber.Text, out int seatNumber) ||
+                string.IsNullOrEmpty(cbStaffName.Text) || string.IsNullOrEmpty(cbStaffPosition.Text) ||
                 string.IsNullOrEmpty(txtOrigin.Text) || string.IsNullOrEmpty(txtDestination.Text) ||
                 !DateTime.TryParse(dateTimePicker1.Text, out DateTime date) ||
-                !DateTime.TryParse(txtTime.Text, out DateTime departureTime) ||
                 !decimal.TryParse(txtFare.Text, out decimal fare))
             {
                 MessageBox.Show("Please fill in all fields with valid data.");
                 return;
             }
+
             SqlConnection connection = new SqlConnection(connectionString);
 
             try
@@ -126,14 +313,14 @@ namespace Final
                 // Add parameters to the SqlCommand object
                 command.Parameters.AddWithValue("@CusName", txtCusName.Text);
                 command.Parameters.AddWithValue("@Contact", txtContact.Text);
-                command.Parameters.AddWithValue("@BusNo", txtBusNo.Text);
+                command.Parameters.AddWithValue("@BusNo", cbBusNo.Text);
                 command.Parameters.AddWithValue("@SeatNumber", seatNumber);
-                command.Parameters.AddWithValue("@StaffName", txtStaffName.Text);
-                command.Parameters.AddWithValue("@StaffPosition", txtStaffPosition.Text);
+                command.Parameters.AddWithValue("@StaffName", cbStaffName.Text);
+                command.Parameters.AddWithValue("@StaffPosition", cbStaffPosition.Text);
                 command.Parameters.AddWithValue("@Origin", txtOrigin.Text);
                 command.Parameters.AddWithValue("@Destination", txtDestination.Text);
-                command.Parameters.AddWithValue("@Date", date);
-                command.Parameters.AddWithValue("@DepartureTime", departureTime);
+                command.Parameters.AddWithValue("@Date", dateTimePicker1.Value);
+                command.Parameters.AddWithValue("@DepartureTime", txtTime.Text);
                 command.Parameters.AddWithValue("@Fare", fare);
 
                 // Execute the stored procedure and get the inserted BookingId
@@ -141,19 +328,9 @@ namespace Final
 
                 if (bookingId > 0)
                 {
-                    MessageBox.Show("Booking inserted successfully! Booking ID: " + bookingId.ToString());
-                    // Clear textboxes for new entry (optional)
-                    txtCusName.Text = "";
-                    txtContact.Text = "";
-                    txtBusNo.Text = "";
-                    txtSeatNumber.Text = "";
-                    txtStaffName.Text = "";
-                    txtStaffPosition.Text = "";
-                    txtOrigin.Text = "";
-                    txtDestination.Text = "";
-                    dateTimePicker1.Text = "";
-                    txtTime.Text = "";
-                    txtFare.Text = "";
+                    MessageBox.Show("Booking inserted successfully! ");
+                    LoadBookingData();
+                    ClearTextBoxes();
                 }
                 else
                 {
@@ -173,5 +350,6 @@ namespace Final
             }
         }
 
+       
     }
 }
