@@ -50,7 +50,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.pbAvtar = new System.Windows.Forms.PictureBox();
             this.txtNameEN = new System.Windows.Forms.TextBox();
@@ -96,13 +95,13 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,66 +131,66 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(24, 28);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 27);
+            this.label2.Size = new System.Drawing.Size(44, 19);
             this.label2.TabIndex = 38;
             this.label2.Text = "StaffID:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(28, 75);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 27);
+            this.label4.Size = new System.Drawing.Size(66, 19);
             this.label4.TabIndex = 40;
-            this.label4.Text = "NameEN:";
+            this.label4.Text = "Name(EN):";
             // 
             // txtID
             // 
             this.txtID.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtID.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(129, 28);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(204, 29);
+            this.txtID.Size = new System.Drawing.Size(204, 28);
             this.txtID.TabIndex = 41;
             this.txtID.Text = "  ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(28, 121);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 27);
+            this.label5.Size = new System.Drawing.Size(66, 19);
             this.label5.TabIndex = 44;
-            this.label5.Text = "NameKH:";
+            this.label5.Text = "Name(KH):";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(28, 165);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 27);
+            this.label6.Size = new System.Drawing.Size(49, 19);
             this.label6.TabIndex = 46;
             this.label6.Text = "Contact:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(30, 218);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 27);
+            this.label7.Size = new System.Drawing.Size(47, 19);
             this.label7.TabIndex = 48;
             this.label7.Text = "Gender:";
             // 
@@ -200,8 +199,8 @@
             this.cbGen.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F);
             this.cbGen.FormattingEnabled = true;
             this.cbGen.Items.AddRange(new object[] {
-            "ស្រី",
-            "ប្រុស"});
+            "Female",
+            "Male"});
             this.cbGen.Location = new System.Drawing.Point(128, 215);
             this.cbGen.Name = "cbGen";
             this.cbGen.Size = new System.Drawing.Size(206, 27);
@@ -210,33 +209,33 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(28, 267);
+            this.label8.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(363, 27);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 27);
+            this.label8.Size = new System.Drawing.Size(38, 19);
             this.label8.TabIndex = 51;
             this.label8.Text = "Email:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(367, 30);
+            this.label9.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(362, 72);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 27);
+            this.label9.Size = new System.Drawing.Size(53, 19);
             this.label9.TabIndex = 53;
             this.label9.Text = "Address:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(367, 85);
+            this.label10.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(361, 123);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 27);
+            this.label10.Size = new System.Drawing.Size(56, 19);
             this.label10.TabIndex = 55;
             this.label10.Text = "BirthDate:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -244,30 +243,30 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(367, 138);
+            this.label11.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(362, 168);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 27);
+            this.label11.Size = new System.Drawing.Size(50, 19);
             this.label11.TabIndex = 59;
             this.label11.Text = "Position:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Khmer OS Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(370, 193);
+            this.label12.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(365, 218);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(84, 27);
+            this.label12.Size = new System.Drawing.Size(70, 19);
             this.label12.TabIndex = 61;
             this.label12.Text = "IsStopWork:";
             // 
             // btnClear
             // 
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(623, 369);
+            this.btnClear.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(725, 369);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 33);
             this.btnClear.TabIndex = 64;
@@ -278,8 +277,8 @@
             // btnUpdate
             // 
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUpdate.Font = new System.Drawing.Font("Khmer OS Muol Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(528, 369);
+            this.btnUpdate.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(630, 369);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 33);
             this.btnUpdate.TabIndex = 65;
@@ -287,22 +286,10 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDelete.Font = new System.Drawing.Font("Khmer OS Muol Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(715, 369);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 33);
-            this.btnDelete.TabIndex = 66;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
-            // 
             // btnLogout
             // 
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogout.Font = new System.Drawing.Font("Khmer OS Muol Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.Location = new System.Drawing.Point(818, 370);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(75, 33);
@@ -325,16 +312,16 @@
             // txtNameEN
             // 
             this.txtNameEN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNameEN.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameEN.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameEN.Location = new System.Drawing.Point(130, 73);
             this.txtNameEN.Name = "txtNameEN";
-            this.txtNameEN.Size = new System.Drawing.Size(204, 32);
+            this.txtNameEN.Size = new System.Drawing.Size(204, 28);
             this.txtNameEN.TabIndex = 69;
             // 
             // txtNameKH
             // 
             this.txtNameKH.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNameKH.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F);
+            this.txtNameKH.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameKH.Location = new System.Drawing.Point(130, 118);
             this.txtNameKH.Name = "txtNameKH";
             this.txtNameKH.Size = new System.Drawing.Size(204, 28);
@@ -343,55 +330,55 @@
             // txtCon
             // 
             this.txtCon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCon.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCon.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCon.Location = new System.Drawing.Point(129, 163);
             this.txtCon.Name = "txtCon";
-            this.txtCon.Size = new System.Drawing.Size(204, 29);
+            this.txtCon.Size = new System.Drawing.Size(204, 28);
             this.txtCon.TabIndex = 71;
             // 
             // txtEma
             // 
             this.txtEma.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEma.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEma.Location = new System.Drawing.Point(129, 267);
+            this.txtEma.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEma.Location = new System.Drawing.Point(464, 27);
             this.txtEma.Name = "txtEma";
-            this.txtEma.Size = new System.Drawing.Size(204, 29);
+            this.txtEma.Size = new System.Drawing.Size(204, 28);
             this.txtEma.TabIndex = 72;
             // 
             // txtBir
             // 
             this.txtBir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBir.Font = new System.Drawing.Font("Khmer OS Muol Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBir.Location = new System.Drawing.Point(469, 80);
+            this.txtBir.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBir.Location = new System.Drawing.Point(463, 118);
             this.txtBir.Name = "txtBir";
-            this.txtBir.Size = new System.Drawing.Size(204, 29);
+            this.txtBir.Size = new System.Drawing.Size(204, 28);
             this.txtBir.TabIndex = 74;
             // 
             // txtSearch
             // 
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Font = new System.Drawing.Font("Khmer OS Muol Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(35, 372);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(300, 31);
+            this.txtSearch.Size = new System.Drawing.Size(300, 28);
             this.txtSearch.TabIndex = 77;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(35, 350);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.Size = new System.Drawing.Size(116, 19);
             this.label1.TabIndex = 79;
             this.label1.Text = "Search (Staff Name) :";
             // 
             // btnInsert
             // 
             this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(431, 368);
+            this.btnInsert.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsert.Location = new System.Drawing.Point(533, 368);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 33);
             this.btnInsert.TabIndex = 80;
@@ -404,12 +391,12 @@
             this.cbPos.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F);
             this.cbPos.FormattingEnabled = true;
             this.cbPos.Items.AddRange(new object[] {
-            "អ្នកគិតលុយ",
-            "បម្រើសេវាកម្ម",
-            "អ្នកគ្រប់គ្រង",
-            "អ្នកថែទាំ",
-            "អ្នកសម្អាត"});
-            this.cbPos.Location = new System.Drawing.Point(469, 137);
+            "Manager",
+            "Cashier",
+            "Service",
+            "Driver",
+            "Cleaner"});
+            this.cbPos.Location = new System.Drawing.Point(464, 167);
             this.cbPos.Name = "cbPos";
             this.cbPos.Size = new System.Drawing.Size(206, 27);
             this.cbPos.TabIndex = 81;
@@ -419,30 +406,31 @@
             this.cbAdd.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F);
             this.cbAdd.FormattingEnabled = true;
             this.cbAdd.Items.AddRange(new object[] {
-            "កំពត",
-            "កែប",
-            "ព្រះសីហនុ",
-            "កំពង់ឆ្នាំង",
-            "ពោធ៍សាត់",
-            "បាត់ដំបង",
-            "ប៉ៃលិន",
-            "បន្ទាយមានជ័យ",
-            "សៀមរាប",
-            "កំពង់ធំ",
-            "កំពង់ចាម",
-            "ព្រៃវែង",
-            "ស្វាយរៀង",
-            "តាកែវ",
-            "កណ្ដាល",
-            "កំពង់ស្ពឺ",
-            "ក្រចេះ",
-            "ស្ទឹងត្រែង",
-            "មណ្ឌលគិរី",
-            "ព្រះវិហារ",
-            "រតនៈគិរី",
-            "កោះកុង",
-            "ឧត្ដរមានជ័យ"});
-            this.cbAdd.Location = new System.Drawing.Point(466, 29);
+            "Kampot",
+            "Kep",
+            "Koh Kong",
+            "Kandal",
+            "Kampong Cham",
+            "Kampong Chhnang",
+            "Kampong Speu",
+            "Kampong Thom",
+            "Takeo",
+            "Banteay Meanchey",
+            "Battambang",
+            "Mondulkiri",
+            "Phnom Penh",
+            "Preah Vihear",
+            "Prey Veng",
+            "Pursat",
+            "Ratanakiri",
+            "Siem Reap",
+            "Preah Sihanouk ",
+            "Stung Treng",
+            "Svay Rieng",
+            "Oddar Meanchey",
+            "Pailin",
+            "Tboung Khmum"});
+            this.cbAdd.Location = new System.Drawing.Point(461, 71);
             this.cbAdd.Name = "cbAdd";
             this.cbAdd.Size = new System.Drawing.Size(206, 27);
             this.cbAdd.TabIndex = 82;
@@ -467,7 +455,7 @@
             this.txtwork.Items.AddRange(new object[] {
             "True",
             "False"});
-            this.txtwork.Location = new System.Drawing.Point(469, 190);
+            this.txtwork.Location = new System.Drawing.Point(464, 215);
             this.txtwork.Name = "txtwork";
             this.txtwork.Size = new System.Drawing.Size(206, 27);
             this.txtwork.TabIndex = 84;
@@ -491,7 +479,6 @@
             this.Controls.Add(this.txtNameKH);
             this.Controls.Add(this.txtNameEN);
             this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.label12);
@@ -539,7 +526,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.TextBox txtNameEN;
         private System.Windows.Forms.TextBox txtNameKH;

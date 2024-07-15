@@ -17,7 +17,7 @@ namespace Final
             dataGridView1.CellClick += dataGridView1_CellContentClick;
 
         }
-        string connectionString = "Data Source=NOENG\\SQLEXPRESS01;Initial Catalog=Test;Integrated Security=True;";
+        string connectionString = DataBaseConfig.ConnectionString;
 
         public class MainForm : Main
         {
@@ -38,6 +38,13 @@ namespace Final
                     adapter.Fill(dataTable);
                     dataGridView1.DataSource = dataTable;
 
+                    // Hide the StaffID column
+                    if (dataGridView1.Columns.Contains("StaffID"))
+                    {
+                        dataGridView1.Columns["StaffID"].Visible = false;
+                    }
+
+                    // Hide the Avatar column
                     if (dataGridView1.Columns.Contains("Avatar"))
                     {
                         dataGridView1.Columns["Avatar"].Visible = false;
@@ -50,6 +57,7 @@ namespace Final
                 }
             }
         }
+
 
         private void Staff_Load(object sender, EventArgs e)
         {
@@ -181,7 +189,18 @@ namespace Final
                                 pbAvtar.Image = null;
                             }
                             dataGridView1.DataSource = dataTable;
-                              
+
+                            // Hide the StaffID column
+                            if (dataGridView1.Columns.Contains("StaffID"))
+                            {
+                                dataGridView1.Columns["StaffID"].Visible = false;
+                            }
+
+                            // Hide the Avatar column
+                            if (dataGridView1.Columns.Contains("Avatar"))
+                            {
+                                dataGridView1.Columns["Avatar"].Visible = false;
+                            }
                         }
                         else
                         {
@@ -210,6 +229,7 @@ namespace Final
                 pbAvtar.Image = null;
             }
         }
+
 
         private void ClearInputFields()
         {
@@ -403,7 +423,7 @@ namespace Final
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var mainToOpen = new Main();
+            var mainToOpen = new Baggage();
             mainToOpen.Show();
         }
 
