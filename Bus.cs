@@ -35,6 +35,15 @@ namespace Final
 
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtID.Text = string.Empty;
+            txtBusType.Text = string.Empty;
+            txtBusNO.Text = string.Empty;
+            txtDefaultFarr.Text = string.Empty;
+            txtTotalSeats.Text = string.Empty;
+            txtBusModel.Text = string.Empty;
+        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -146,6 +155,7 @@ namespace Final
                     connection.Open();
                     Console.WriteLine("Connection successful!");
                     SqlCommand command = new SqlCommand("dbo.spGetBusDatas", connection);
+
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
@@ -223,6 +233,7 @@ namespace Final
             catch (SqlException sqlEx)
             {
                 MessageBox.Show("SQL error occurred: " + sqlEx.Message);
+
             }
             catch (Exception ex)
             {
@@ -251,7 +262,25 @@ namespace Final
                 SearchBusByBusNo(busNo);
                 e.Handled = true;
                 e.SuppressKeyPress = true; // Prevents the beep sound on Enter key press
+
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            string busNo = txtsearch.Text.Trim();
+            SearchBusByBusNo(busNo);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            string busNo = txtsearch.Text.Trim();
+            SearchBusByBusNo(busNo);
         }
 
         private void btnReload_Click(object sender, EventArgs e)
@@ -272,5 +301,19 @@ namespace Final
             var formToOpen = new Login();
             formToOpen.Show();
         }
+
+        private void txtsearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string busNo = txtsearch.Text.Trim();
+                SearchBusByBusNo(busNo);
+                e.Handled = true;
+                e.SuppressKeyPress = true; // Prevents the beep sound on Enter key press
+            }
+        }
+
+
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Windows.Forms;
+using System.Windows.Forms;
 
 namespace Final
 {
@@ -293,13 +293,13 @@ namespace Final
             this.dgvPay.AllowUserToDeleteRows = false;
             this.dgvPay.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPay.Location = new System.Drawing.Point(12, 474);
+            this.dgvPay.Location = new System.Drawing.Point(1, 474);
             this.dgvPay.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPay.Name = "dgvPay";
             this.dgvPay.ReadOnly = true;
             this.dgvPay.RowHeadersWidth = 62;
             this.dgvPay.RowTemplate.Height = 28;
-            this.dgvPay.Size = new System.Drawing.Size(1270, 140);
+            this.dgvPay.Size = new System.Drawing.Size(1287, 140);
             this.dgvPay.TabIndex = 0;
             // 
             // btnReload
@@ -329,6 +329,7 @@ namespace Final
             this.ClientSize = new System.Drawing.Size(1295, 629);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnReload);
+
             this.Controls.Add(this.dgvPay);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label1);
