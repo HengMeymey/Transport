@@ -3,6 +3,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using ClosedXML.Excel;
+using static Final.Bus;
+using static Final.Main;
 
 namespace Final
 {
@@ -131,6 +133,20 @@ namespace Final
         private void dtpBeginDate_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var mainToOpen = new MainForm();
+            mainToOpen.Show();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Login();
+            formToOpen.Show();
         }
     }
 }

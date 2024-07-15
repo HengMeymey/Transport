@@ -1,4 +1,4 @@
-﻿using System.Windows.Forms;
+using System.Windows.Forms;
 
 namespace Final
 {
@@ -39,7 +39,6 @@ namespace Final
             this.btnSearch = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
@@ -59,7 +58,8 @@ namespace Final
             this.label1 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.dgvPay = new System.Windows.Forms.DataGridView();
-            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,19 +145,9 @@ namespace Final
             this.label11.TabIndex = 11;
             this.label11.Text = "Staff Name     :";
             // 
-            // btnInsert
-            // 
-            this.btnInsert.Location = new System.Drawing.Point(890, 181);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(112, 47);
-            this.btnInsert.TabIndex = 12;
-            this.btnInsert.Text = "Insert";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(1028, 181);
+            this.btnUpdate.Location = new System.Drawing.Point(889, 181);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(112, 47);
             this.btnUpdate.TabIndex = 13;
@@ -279,6 +269,7 @@ namespace Final
             this.btnExit.TabIndex = 36;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label1
             // 
@@ -311,22 +302,34 @@ namespace Final
             this.dgvPay.Size = new System.Drawing.Size(1287, 140);
             this.dgvPay.TabIndex = 0;
             // 
-            // btnPrint
+            // btnReload
             // 
-            this.btnPrint.Location = new System.Drawing.Point(1161, 407);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(117, 44);
-            this.btnPrint.TabIndex = 39;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.button2_Click);
+            this.btnReload.Location = new System.Drawing.Point(1024, 183);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(117, 44);
+            this.btnReload.TabIndex = 39;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Location = new System.Drawing.Point(1166, 3);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(112, 47);
+            this.btnLogOut.TabIndex = 40;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1329, 629);
-            this.Controls.Add(this.btnPrint);
+            this.ClientSize = new System.Drawing.Size(1295, 629);
+            this.Controls.Add(this.btnLogOut);
+            this.Controls.Add(this.btnReload);
+
             this.Controls.Add(this.dgvPay);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label1);
@@ -335,7 +338,6 @@ namespace Final
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtStaffName);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSeatNo);
@@ -379,7 +381,6 @@ namespace Final
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.TextBox txtPhoneNumber;
@@ -399,6 +400,7 @@ namespace Final
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPrice;
         private DataGridView dgvPay;
-        private Button btnPrint;
+        private Button btnReload;
+        private Button btnLogOut;
     }
 }

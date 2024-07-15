@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Final.Bus;
+using static Final.Schedule;
+using static Final.Payment;
+using static Final.Report;
+using static Final.Booking;
 
 namespace Final
 {
@@ -38,6 +43,34 @@ namespace Final
         public class BusForm : Bus
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Schedule();
+            formToOpen.Show();
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Payment();
+            formToOpen.Show();
+        }
+
+        private void btnBooking_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Booking();
+            formToOpen.Show();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Report();
+            formToOpen.Show();
         }
     }
 }
