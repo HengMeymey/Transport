@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Final.Bus;
+using static Final.Main;
 
 namespace Final
 {
@@ -252,6 +254,7 @@ namespace Final
         private void Booking_Load(object sender, EventArgs e)
         {
             LoadBookingData();
+            ClearTextBoxes();
         }
 
         private void btnReload_Click(object sender, EventArgs e)
@@ -350,6 +353,96 @@ namespace Final
             }
         }
 
-       
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            // Ensure a booking is selected before updating
+            if (dgvBooking.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a booking to update.");
+                return;
+            }
+
+            // Retrieve booking details from the selected row
+            int bookingId = Convert.ToInt32(dgvBooking.SelectedRows[0].Cells["BookingId"].Value); 
+            string cusName = txtCusName.Text;
+            string contact = txtContact.Text;
+            string busNo = cbBusNo.Text;
+            int seatNumber;
+            if (!int.TryParse(cbSeatNumber.Text, out seatNumber))
+            {
+                seatNumber = 0; 
+            }
+            string staffName = cbStaffName.Text;
+            string staffPosition = cbStaffPosition.Text;
+            string origin = txtOrigin.Text;
+            string destination = txtDestination.Text;
+            DateTime date = dateTimePicker1.Value;
+            DateTime departureTime = DateTime.Parse(txtTime.Text); 
+            decimal fare;
+            if (!decimal.TryParse(txtFare.Text, out fare))
+            {
+                fare = 0; 
+            }
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("spUpdateBooking", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@BookingId", bookingId);
+                command.Parameters.AddWithValue("@CusName", cusName);
+                command.Parameters.AddWithValue("@Contact", contact);
+                command.Parameters.AddWithValue("@BusNo", busNo);
+                command.Parameters.AddWithValue("@SeatNumber", seatNumber);
+                command.Parameters.AddWithValue("@StaffName", staffName);
+                command.Parameters.AddWithValue("@StaffPosition", staffPosition);
+                command.Parameters.AddWithValue("@Origin", origin);
+                command.Parameters.AddWithValue("@Destination", destination);
+                command.Parameters.AddWithValue("@Date", date);
+                command.Parameters.AddWithValue("@DepartureTime", departureTime);
+                command.Parameters.AddWithValue("@Fare", fare);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Booking updated successfully!");
+                    LoadBookingData(); 
+                    ClearTextBoxes(); 
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while updating booking.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var mainToOpen = new MainForm();
+            mainToOpen.Show();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Login();
+            formToOpen.Show();
+        }
     }
 }

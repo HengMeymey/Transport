@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Final.Form2;
+using static Final.Main;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Final
@@ -34,15 +35,6 @@ namespace Final
 
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            txtID.Text = string.Empty;
-            txtBusType.Text = string.Empty;
-            txtBusNO.Text = string.Empty;
-            txtDefaultFarr.Text = string.Empty;
-            txtTotalSeats.Text = string.Empty;
-            txtBusModel.Text = string.Empty;
-        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -153,7 +145,7 @@ namespace Final
                 {
                     connection.Open();
                     Console.WriteLine("Connection successful!");
-                    SqlCommand command = new SqlCommand("dbo,spGetBusDatas", connection);
+                    SqlCommand command = new SqlCommand("dbo.spGetBusDatas", connection);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
@@ -262,7 +254,23 @@ namespace Final
             }
         }
 
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            txtID.Text = string.Empty;
+            txtBusType.Text = string.Empty;
+            txtBusNO.Text = string.Empty;
+            txtDefaultFarr.Text = string.Empty;
+            txtTotalSeats.Text = string.Empty;
+            txtBusModel.Text = string.Empty;
+            txtsearch.Text = string.Empty;
+            PopulateDataGridView();
+        }
 
-
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Login();
+            formToOpen.Show();
+        }
     }
 }

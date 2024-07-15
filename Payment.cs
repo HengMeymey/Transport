@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
+using static Final.Main;
+using static Final.Bus;
 
 
 namespace Final
@@ -73,74 +75,22 @@ namespace Final
                 checkPaid.Checked = Convert.ToBoolean(selectedRow.Cells["isPaid"].Value);
             }
         }
+
         //private int GetPaymentIdFromSelectedRow()
         //{
         //    if (dgvPay.SelectedRows.Count > 0)
         //    {
         //        DataGridViewRow selectedRow = dgvPay.SelectedRows[0];
+        //        int rowIndex = selectedRow.Index;
 
-        //        // Assuming the Payment Id is in the first cell of the selected row (you may need to adjust this based on your DataGridView's column order)
-        //        if (selectedRow.Cells["PaymentId"].Value != null && int.TryParse(selectedRow.Cells["PaymentId"].Value.ToString(), out int paymentId))
-        //        {
-        //            return paymentId;
-        //        }
+        //        int paymentId = rowIndex + 2;
+
+        //        return paymentId;
         //    }
 
-        //    // Return a default value or throw an exception based on your application logic
         //    return -1; // Default value if Payment Id is not found
         //}
 
-        private int GetPaymentIdFromSelectedRow()
-        {
-            if (dgvPay.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvPay.SelectedRows[0];
-                int rowIndex = selectedRow.Index;
-
-                // Assuming the Payment Id starts from 2 and is in the first cell of the selected row
-                int paymentId = rowIndex + 2;
-
-                return paymentId;
-            }
-
-            // Return a default value or throw an exception based on your application logic
-            return -1; // Default value if Payment Id is not found
-        }
-
-        private void btnInsert_Click(object sender, EventArgs e)
-        {
-
-
-            // Call the stored procedure to update the payment
-            //using (SqlConnection connection = new SqlConnection("YourConnectionStringHere"))
-            //{
-            //    using (SqlCommand command = new SqlCommand("dbo.spUpdatePayment", connection))
-            //    {
-            //        command.CommandType = CommandType.StoredProcedure;
-
-            //        command.Parameters.AddWithValue("@PaymentId", paymentId);
-            //        command.Parameters.AddWithValue("@CusId", cusId);
-            //        command.Parameters.AddWithValue("@CusName", cusName);
-            //        command.Parameters.AddWithValue("@Contact", contact);
-            //        command.Parameters.AddWithValue("@BusId", busId);
-            //        command.Parameters.AddWithValue("@BusNo", busNo);
-            //        command.Parameters.AddWithValue("@StaffId", staffId);
-            //        command.Parameters.AddWithValue("@StaffName", staffName);
-            //        command.Parameters.AddWithValue("@BookingDetailsId", bookingDetailsId);
-            //        command.Parameters.AddWithValue("@SeatNumber", seatNumber);
-            //        command.Parameters.AddWithValue("@Origin", origin);
-            //        command.Parameters.AddWithValue("@Destination", destination);
-            //        command.Parameters.AddWithValue("@Date", date);
-            //        command.Parameters.AddWithValue("@DepartureTime", departureTime);
-            //        command.Parameters.AddWithValue("@TotalFare", totalFare);
-            //        command.Parameters.AddWithValue("@CreatedDate", createdDate);
-            //        command.Parameters.AddWithValue("@isPaid", isPaid);
-
-            //        connection.Open();
-            //        command.ExecuteNonQuery();
-            //    }
-            //}
-        }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -210,91 +160,9 @@ namespace Final
         }
 
 
-        private async void button2_Click(object sender, EventArgs e)
-        {
-            // Ensure there's a selected row
-            if (dgvPay.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Please select a row to print.");
-                return;
-            }
-
-            // Get the selected row
-            DataGridViewRow selectedRow = dgvPay.SelectedRows[0];
-
-            // Create an object to hold the row data
-            var rowData = new
-            {
-                PaymentID = selectedRow.Cells["PaymentID"].Value,
-                CusName = selectedRow.Cells["CusName"].Value,
-                Contact = selectedRow.Cells["Contact"].Value,
-                BusNo = selectedRow.Cells["BusNo"].Value,
-                StaffName = selectedRow.Cells["StaffName"].Value,
-                StaffPosition = selectedRow.Cells["StaffPosition"].Value,
-                SeatNumber = selectedRow.Cells["SeatNumber"].Value,
-                Origin = selectedRow.Cells["Origin"].Value,
-                Destination = selectedRow.Cells["Destination"].Value,
-                Date = selectedRow.Cells["Date"].Value,
-                DepartureTime = selectedRow.Cells["DepartureTime"].Value,
-                TotalFare = selectedRow.Cells["TotalFare"].Value,
-                IsPaid = selectedRow.Cells["isPaid"].Value
-            };
-
-            // Convert the row data to JSON
-            var jsonData = JsonConvert.SerializeObject(new { data = rowData });
-
-            // Send the JSON data to jsReport Online to generate the PDF
-            var pdf = await GeneratePdfAsync(jsonData);
-
-            // Save the PDF to a file
-            if (pdf != null)
-            {
-                var saveFileDialog = new SaveFileDialog
-                {
-                    Filter = "PDF files (*.pdf)|*.pdf",
-                    Title = "Save PDF File",
-                    FileName = "Report.pdf"
-                };
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    File.WriteAllBytes(saveFileDialog.FileName, pdf);
-                    MessageBox.Show("PDF saved successfully.");
-                }
-            }
-        }
-
-        private async Task<byte[]> GeneratePdfAsync(string jsonData)
-        {
-            using (var client = new HttpClient())
-            {
-                var url = "https://mey.jsreportonline.net/studio/templates/EMzTLUq"; // Replace with your jsReport Online server URL
-                var templateName = "Transport"; // Replace with your jsReport template name or ID
-
-                var requestContent = new StringContent(
-                    JsonConvert.SerializeObject(new
-                    {
-                        template = new { name = templateName },
-                        data = JsonConvert.DeserializeObject(jsonData)
-                    }), Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync(url, requestContent);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return await response.Content.ReadAsByteArrayAsync();
-                }
-                else
-                {
-                    MessageBox.Show("An error occurred while generating the PDF: " + response.ReasonPhrase);
-                    return null;
-                }
-            }
-        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            // Retrieve the contact number from a textbox (assuming you have a textbox named txtContact)
             string contact = txtPhoneNumber.Text.Trim();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -310,14 +178,48 @@ namespace Final
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
-                    // Assuming you have a DataGridView named dataGridViewPayments
-                    dgvPay.DataSource = dataTable;
+                    if (dataTable.Rows.Count == 0)
+                    {
+                        MessageBox.Show("This contact is not found : " + contact);
+                        //dgvPay.DataSource = null; 
+                    }
+                    else
+                    {
+                        dgvPay.DataSource = dataTable;
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occurred: " + ex.Message);
                 }
             }
+        }
+
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Login();
+            formToOpen.Show();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var mainToOpen = new MainForm();
+            mainToOpen.Show();
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Text = "";
+                }
+            }
+            LoadPaymentData();
         }
     }
 }
