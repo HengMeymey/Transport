@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bus));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,13 +45,14 @@
             this.txtTotalSeats = new System.Windows.Forms.TextBox();
             this.txtDefaultFarr = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnReload = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnLogOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -69,12 +70,29 @@
             // 
             // dataGridView1
             // 
+
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+            this.dataGridView1.Location = new System.Drawing.Point(419, 539);
+            this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(1079, 282);
+
             this.dataGridView1.Location = new System.Drawing.Point(401, 545);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -88,6 +106,7 @@
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(1049, 282);
+
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -96,7 +115,9 @@
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Khmer Moul", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(401, 466);
+
+            this.label1.Location = new System.Drawing.Point(419, 466);
+
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 34);
             this.label1.TabIndex = 1;
@@ -106,9 +127,11 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Final.Properties.Resources.search__2_;
-            this.pictureBox1.Location = new System.Drawing.Point(818, 461);
+
+            this.pictureBox1.Location = new System.Drawing.Point(836, 461);
+
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 34);
+            this.pictureBox1.Size = new System.Drawing.Size(53, 34);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -117,30 +140,35 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(985, 239);
+            this.label2.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(1003, 239);
+
+
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 37);
+            this.label2.Size = new System.Drawing.Size(88, 37);
             this.label2.TabIndex = 4;
             this.label2.Text = "BusType";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(981, 95);
+
+            this.label3.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(999, 95);
+
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 37);
+            this.label3.Size = new System.Drawing.Size(76, 37);
             this.label3.TabIndex = 5;
             this.label3.Text = "Bus No";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(981, 169);
+            this.label4.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(999, 169);
+
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 37);
+            this.label4.Size = new System.Drawing.Size(94, 37);
             this.label4.TabIndex = 6;
             this.label4.Text = "TotalSeat";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -148,88 +176,98 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(985, 304);
+            this.label5.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1003, 304);
+
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 37);
+            this.label5.Size = new System.Drawing.Size(102, 37);
             this.label5.TabIndex = 7;
             this.label5.Text = "Bus Model";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(985, 372);
+            this.label9.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(1003, 372);
+
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(122, 37);
+            this.label9.Size = new System.Drawing.Size(111, 37);
             this.label9.TabIndex = 11;
             this.label9.Text = "DefaultFare";
             // 
             // txtBusType
             // 
-            this.txtBusType.Location = new System.Drawing.Point(1166, 239);
+            this.txtBusType.Location = new System.Drawing.Point(1184, 239);
+
             this.txtBusType.Multiline = true;
             this.txtBusType.Name = "txtBusType";
-            this.txtBusType.Size = new System.Drawing.Size(253, 32);
+            this.txtBusType.Size = new System.Drawing.Size(270, 32);
             this.txtBusType.TabIndex = 16;
             // 
             // txtBusNO
             // 
-            this.txtBusNO.Location = new System.Drawing.Point(1166, 100);
+            this.txtBusNO.Location = new System.Drawing.Point(1184, 100);
+
             this.txtBusNO.Multiline = true;
             this.txtBusNO.Name = "txtBusNO";
-            this.txtBusNO.Size = new System.Drawing.Size(253, 32);
+            this.txtBusNO.Size = new System.Drawing.Size(270, 32);
             this.txtBusNO.TabIndex = 20;
             // 
             // txtBusModel
             // 
-            this.txtBusModel.Location = new System.Drawing.Point(1166, 304);
+            this.txtBusModel.Location = new System.Drawing.Point(1184, 304);
+
             this.txtBusModel.Multiline = true;
             this.txtBusModel.Name = "txtBusModel";
-            this.txtBusModel.Size = new System.Drawing.Size(253, 32);
+            this.txtBusModel.Size = new System.Drawing.Size(270, 32);
             this.txtBusModel.TabIndex = 21;
             // 
             // txtTotalSeats
             // 
-            this.txtTotalSeats.Location = new System.Drawing.Point(1166, 169);
+            this.txtTotalSeats.Location = new System.Drawing.Point(1184, 169);
+
             this.txtTotalSeats.Multiline = true;
             this.txtTotalSeats.Name = "txtTotalSeats";
-            this.txtTotalSeats.Size = new System.Drawing.Size(253, 32);
+            this.txtTotalSeats.Size = new System.Drawing.Size(270, 32);
             this.txtTotalSeats.TabIndex = 22;
             // 
             // txtDefaultFarr
             // 
-            this.txtDefaultFarr.Location = new System.Drawing.Point(1166, 372);
+            this.txtDefaultFarr.Location = new System.Drawing.Point(1184, 372);
+
             this.txtDefaultFarr.Multiline = true;
             this.txtDefaultFarr.Name = "txtDefaultFarr";
-            this.txtDefaultFarr.Size = new System.Drawing.Size(253, 32);
+            this.txtDefaultFarr.Size = new System.Drawing.Size(270, 32);
             this.txtDefaultFarr.TabIndex = 26;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1333, 455);
+            this.btnExit.Location = new System.Drawing.Point(1351, 455);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(106, 39);
+            this.btnExit.Size = new System.Drawing.Size(123, 39);
+
             this.btnExit.TabIndex = 31;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnClear
+            // btnReload
             // 
-            this.btnClear.Location = new System.Drawing.Point(1222, 455);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(102, 40);
-            this.btnClear.TabIndex = 32;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+
+            this.btnReload.Location = new System.Drawing.Point(1240, 455);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(119, 40);
+            this.btnReload.TabIndex = 32;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(988, 455);
+            this.btnInsert.Location = new System.Drawing.Point(1006, 455);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(102, 40);
+            this.btnInsert.Size = new System.Drawing.Size(119, 40);
+
             this.btnInsert.TabIndex = 33;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
@@ -237,9 +275,11 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(1105, 456);
+
+            this.btnUpdate.Location = new System.Drawing.Point(1123, 456);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(102, 38);
+            this.btnUpdate.Size = new System.Drawing.Size(119, 38);
+
             this.btnUpdate.TabIndex = 34;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -248,52 +288,72 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(985, 30);
+
+            this.label11.Font = new System.Drawing.Font("Khmer OS Muol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(999, 30);
+
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 37);
+            this.label11.Size = new System.Drawing.Size(66, 37);
             this.label11.TabIndex = 36;
             this.label11.Text = "BusID";
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(1166, 35);
+
+            this.txtID.Location = new System.Drawing.Point(1184, 35);
+
             this.txtID.Multiline = true;
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(253, 32);
+            this.txtID.Size = new System.Drawing.Size(270, 32);
             this.txtID.TabIndex = 37;
             // 
             // txtsearch
             // 
-            this.txtsearch.Location = new System.Drawing.Point(481, 466);
+
+            this.txtsearch.Location = new System.Drawing.Point(499, 466);
             this.txtsearch.Multiline = true;
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(315, 34);
+            this.txtsearch.Size = new System.Drawing.Size(332, 34);
+
             this.txtsearch.TabIndex = 38;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Final.Properties.Resources.photo_2024_06_22_14_29_17;
-            this.pictureBox2.Location = new System.Drawing.Point(401, 30);
+
+            this.pictureBox2.Location = new System.Drawing.Point(419, 30);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(471, 379);
+            this.pictureBox2.Size = new System.Drawing.Size(488, 379);
+
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 39;
             this.pictureBox2.TabStop = false;
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Location = new System.Drawing.Point(1565, 28);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(123, 39);
+            this.btnLogOut.TabIndex = 40;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // Bus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1665, 833);
+            this.ClientSize = new System.Drawing.Size(1828, 833);
+            this.Controls.Add(this.btnLogOut);
+
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txtsearch);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnInsert);
-            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtDefaultFarr);
             this.Controls.Add(this.txtTotalSeats);
@@ -336,12 +396,14 @@
         private System.Windows.Forms.TextBox txtTotalSeats;
         private System.Windows.Forms.TextBox txtDefaultFarr;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtsearch;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnLogOut;
+
     }
 }
