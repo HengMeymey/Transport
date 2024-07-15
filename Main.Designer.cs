@@ -87,6 +87,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Report";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -99,6 +100,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Schedule";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnBooking
             // 
@@ -111,6 +113,7 @@
             this.btnBooking.TabIndex = 7;
             this.btnBooking.Text = "Booking";
             this.btnBooking.UseVisualStyleBackColor = false;
+            this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
             // 
             // button5
             // 
@@ -148,6 +151,7 @@
             this.btnPayment.TabIndex = 11;
             this.btnPayment.Text = "Payment";
             this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // Main
             // 
