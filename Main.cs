@@ -44,11 +44,22 @@ namespace Final
         {
 
         }
+        public class BaggageForm : Baggage
+        {
 
+        }
+        
         private void btnStaff_Click(object sender, EventArgs e)
         {
             this.Hide();
             var formToOpen = new StaffForm();
+            formToOpen.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new BaggageForm();
             formToOpen.Show();
         }
     }
