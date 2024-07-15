@@ -14,7 +14,8 @@ namespace Final
             dataGridView1.CellClick += dataGridView1_CellContentClick;
             //this.Load += new System.EventHandler(this.Form1_Load);
         }
-        string connectionString = "Data Source=NOENG\\SQLEXPRESS01;Initial Catalog=Test;Integrated Security=True;";
+
+        string connectionString = DataBaseConfig.ConnectionString;
 
         private void txtNameEN_TextChanged(object sender, EventArgs e)
         {
@@ -40,7 +41,7 @@ namespace Final
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var mainToOpen = new Staff();
+            var mainToOpen = new Main();
             mainToOpen.Show();
         }
 
@@ -236,15 +237,22 @@ namespace Final
                             txtFare.Text = firstRow["Fare"].ToString();
                             dataGridView1.DataSource = dataTable;
 
-                            if (dataGridView1.Columns["Contact"] != null)
+                            // Hide the StaffID column
+                            if (dataGridView1.Columns.Contains("StaffID"))
+                            {
+                                dataGridView1.Columns["StaffID"].Visible = false;
+                            }
+
+                            // Hide other columns if necessary
+                            if (dataGridView1.Columns.Contains("Contact"))
                             {
                                 dataGridView1.Columns["Contact"].Visible = false;
                             }
-                            if (dataGridView1.Columns["StaffName"] != null)
+                            if (dataGridView1.Columns.Contains("StaffName"))
                             {
                                 dataGridView1.Columns["StaffName"].Visible = false;
                             }
-                            if (dataGridView1.Columns["StaffPosition"] != null)
+                            if (dataGridView1.Columns.Contains("StaffPosition"))
                             {
                                 dataGridView1.Columns["StaffPosition"].Visible = false;
                             }
@@ -273,6 +281,7 @@ namespace Final
                 MessageBox.Show("Please enter a valid Contact.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -346,10 +355,13 @@ namespace Final
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
-                    dataGridView1.DataSource = null;
-                    dataGridView1.Rows.Clear();
-                    dataGridView1.Columns.Clear();
                     dataGridView1.DataSource = dataTable;
+
+                    // Hide the StaffID column
+                    if (dataGridView1.Columns.Contains("StaffID"))
+                    {
+                        dataGridView1.Columns["StaffID"].Visible = false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -358,6 +370,7 @@ namespace Final
                 }
             }
         }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
