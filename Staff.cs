@@ -23,7 +23,6 @@ namespace Final
         {
 
         }
-
         private void PopulateDataGridView()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -31,15 +30,18 @@ namespace Final
                 try
                 {
                     connection.Open();
-                    Console.WriteLine("Connection successful!");
-                    SqlCommand command = new SqlCommand("SELECT * FROM dbo.tblStaff", connection);
+                    string query = "GetStaffDetails";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.CommandType = CommandType.StoredProcedure;
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
-                    dataGridView1.DataSource = null;
-                    dataGridView1.Rows.Clear();
-                    dataGridView1.Columns.Clear();
                     dataGridView1.DataSource = dataTable;
+
+                    if (dataGridView1.Columns.Contains("Avatar"))
+                    {
+                        dataGridView1.Columns["Avatar"].Visible = false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -51,8 +53,6 @@ namespace Final
 
         private void Staff_Load(object sender, EventArgs e)
         {
-
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -66,12 +66,70 @@ namespace Final
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
+                    cbGen.DropDownStyle = ComboBoxStyle.DropDownList;
+                    cbAdd.DropDownStyle = ComboBoxStyle.DropDownList;
+                    cbPos.DropDownStyle = ComboBoxStyle.DropDownList;
+                    txtwork.DropDownStyle = ComboBoxStyle.DropDownList;
+
                     dataGridView1.DataSource = dataTable;
+
+                    if (dataGridView1.Columns.Contains("Avatar"))
+                    {
+                        dataGridView1.Columns["Avatar"].Visible = false;
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error: " + ex.Message);
                     MessageBox.Show("Error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+
+                txtID.Text = selectedRow.Cells["StaffID"].Value.ToString();
+                txtNameEN.Text = selectedRow.Cells["Name"].Value.ToString();
+                txtNameKH.Text = selectedRow.Cells["NameKH"].Value.ToString();
+                txtCon.Text = selectedRow.Cells["Contact"].Value.ToString();
+                cbGen.Text = selectedRow.Cells["Gender"].Value.ToString();
+                txtEma.Text = selectedRow.Cells["Email"].Value.ToString();
+                cbAdd.Text = selectedRow.Cells["Address"].Value.ToString();
+
+                if (selectedRow.Cells["BirthDate"].Value != DBNull.Value)
+                {
+                    txtBir.Text = Convert.ToDateTime(selectedRow.Cells["BirthDate"].Value).ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    txtBir.Text = string.Empty;
+                }
+
+                cbPos.Text = selectedRow.Cells["StaffPosition"].Value.ToString();
+                txtwork.Text = selectedRow.Cells["IsStoppedWork"].Value.ToString();
+
+                if (dataGridView1.Columns.Contains("Avatar"))
+                {
+                    if (selectedRow.Cells["Avatar"].Value != DBNull.Value)
+                    {
+                        byte[] avatarData = (byte[])selectedRow.Cells["Avatar"].Value;
+                        using (MemoryStream ms = new MemoryStream(avatarData))
+                        {
+                            pbAvtar.Image = Image.FromStream(ms);
+                        }
+                    }
+                    else
+                    {
+                        pbAvtar.Image = null;
+                    }
+                }
+                else
+                {
+                    pbAvtar.Image = null;
                 }
             }
         }
@@ -123,9 +181,7 @@ namespace Final
                                 pbAvtar.Image = null;
                             }
                             dataGridView1.DataSource = dataTable;
-                            dataGridView1.Columns.Clear();
-                            dataGridView1.Columns.Add("Name", "Name");
-                            dataGridView1.Columns["Name"].DataPropertyName = "Name"; // Ensure mapping to the correct column in the DataTable
+                              
                         }
                         else
                         {
@@ -158,62 +214,6 @@ namespace Final
         private void ClearInputFields()
         {
             txtNameEN.Clear();
-            // Clear other input fields as necessary
-            // txtID.Clear();
-            // txtNameKH.Clear();
-            // txtCon.Clear();
-            // cbGen.SelectedIndex = -1;
-            // txtEma.Clear();
-            // cbAdd.Clear();
-            // txtBir.Clear();
-            // cbPos.Clear();
-            // txtwork.Clear();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-
-                txtID.Text = selectedRow.Cells["StaffID"].Value.ToString();
-                txtNameEN.Text = selectedRow.Cells["Name"].Value.ToString();
-                txtNameKH.Text = selectedRow.Cells["NameKH"].Value.ToString();
-                txtCon.Text = selectedRow.Cells["Contact"].Value.ToString();
-                cbGen.Text = selectedRow.Cells["Gender"].Value.ToString();
-                txtEma.Text = selectedRow.Cells["Email"].Value.ToString();
-                cbAdd.Text = selectedRow.Cells["Address"].Value.ToString();
-
-                if (selectedRow.Cells["BirthDate"].Value != DBNull.Value)
-                {
-                    txtBir.Text = Convert.ToDateTime(selectedRow.Cells["BirthDate"].Value).ToString("MM/dd/yyyy");
-                }
-                else
-                {
-                    txtBir.Text = string.Empty;
-                }
-
-                cbPos.Text = selectedRow.Cells["StaffPosition"].Value.ToString();
-                txtwork.Text = selectedRow.Cells["IsStoppedWork"].Value.ToString();
-
-                if (selectedRow.Cells["Avatar"].Value != DBNull.Value)
-                {
-                    byte[] avatarData = (byte[])selectedRow.Cells["Avatar"].Value;
-                    using (MemoryStream ms = new MemoryStream(avatarData))
-                    {
-                        pbAvtar.Image = Image.FromStream(ms);
-                    }
-                }
-                else
-                {
-                    pbAvtar.Image = null;
-                }
-
-                dataGridView1.DataSource = null;
-                dataGridView1.Columns.Clear();
-                dataGridView1.Columns.Add("Name", "Name");
-                dataGridView1.Columns["Name"].DataPropertyName = "Name";
-            }
         }
 
         private void btnInsert_Click_1(object sender, EventArgs e)
@@ -247,7 +247,6 @@ namespace Final
                     command.Parameters.AddWithValue("@StaffPosition", cbPos.Text);
                     command.Parameters.AddWithValue("@IsStoppedWork", Convert.ToBoolean(txtwork.Text));
 
-                    // Convert avatar image to byte array
                     byte[] avatarData = null;
                     if (pbAvtar.Image != null)
                     {
@@ -312,7 +311,6 @@ namespace Final
                         command.Parameters.AddWithValue("@StaffPosition", cbPos.Text);
                         command.Parameters.AddWithValue("@IsStoppedWork", Convert.ToBoolean(txtwork.Text));
 
-                        // Convert avatar image to byte array
                         byte[] avatarData = null;
                         if (pbAvtar.Image != null)
                         {
@@ -375,7 +373,7 @@ namespace Final
 
                         command.ExecuteNonQuery();
                         PopulateDataGridView();
-
+                     
                         txtID.Text = string.Empty;
                         cbAdd.Text = string.Empty;
                         txtBir.Text = string.Empty;
@@ -405,13 +403,8 @@ namespace Final
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var mainToOpen = new MainForm();
+            var mainToOpen = new Main();
             mainToOpen.Show();
-        }
-
-        private void pbAvtar_Click(object sender, EventArgs e)
-        {
-
         }
 
         private byte[] imageData = null;
@@ -423,11 +416,8 @@ namespace Final
 
             if (open.ShowDialog() == DialogResult.OK)
             {
-                // Load the image into the picture box
                 pbAvtar.Image = new Bitmap(open.FileName);
                 pbAvtar.Tag = open.FileName;
-
-                // Convert the image file to a byte array
                 imageData = File.ReadAllBytes(open.FileName);
             }
         }
