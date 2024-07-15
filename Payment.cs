@@ -107,41 +107,6 @@ namespace Final
             return -1; // Default value if Payment Id is not found
         }
 
-        private void btnInsert_Click(object sender, EventArgs e)
-        {
-
-
-            // Call the stored procedure to update the payment
-            //using (SqlConnection connection = new SqlConnection("YourConnectionStringHere"))
-            //{
-            //    using (SqlCommand command = new SqlCommand("dbo.spUpdatePayment", connection))
-            //    {
-            //        command.CommandType = CommandType.StoredProcedure;
-
-            //        command.Parameters.AddWithValue("@PaymentId", paymentId);
-            //        command.Parameters.AddWithValue("@CusId", cusId);
-            //        command.Parameters.AddWithValue("@CusName", cusName);
-            //        command.Parameters.AddWithValue("@Contact", contact);
-            //        command.Parameters.AddWithValue("@BusId", busId);
-            //        command.Parameters.AddWithValue("@BusNo", busNo);
-            //        command.Parameters.AddWithValue("@StaffId", staffId);
-            //        command.Parameters.AddWithValue("@StaffName", staffName);
-            //        command.Parameters.AddWithValue("@BookingDetailsId", bookingDetailsId);
-            //        command.Parameters.AddWithValue("@SeatNumber", seatNumber);
-            //        command.Parameters.AddWithValue("@Origin", origin);
-            //        command.Parameters.AddWithValue("@Destination", destination);
-            //        command.Parameters.AddWithValue("@Date", date);
-            //        command.Parameters.AddWithValue("@DepartureTime", departureTime);
-            //        command.Parameters.AddWithValue("@TotalFare", totalFare);
-            //        command.Parameters.AddWithValue("@CreatedDate", createdDate);
-            //        command.Parameters.AddWithValue("@isPaid", isPaid);
-
-            //        connection.Open();
-            //        command.ExecuteNonQuery();
-            //    }
-            //}
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int paymentId = Convert.ToInt32(dgvPay.SelectedRows[0].Cells["PaymentId"].Value);
