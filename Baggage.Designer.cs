@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCus = new System.Windows.Forms.TextBox();
             this.txtCon = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtStaffn = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtReciver = new System.Windows.Forms.TextBox();
@@ -62,6 +62,7 @@
             this.txtOrigin = new System.Windows.Forms.ComboBox();
             this.txtDes = new System.Windows.Forms.ComboBox();
             this.txtBagType = new System.Windows.Forms.ComboBox();
+            this.staffNameComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -127,15 +128,6 @@
             this.label3.Size = new System.Drawing.Size(49, 19);
             this.label3.TabIndex = 73;
             this.label3.Text = "Contact:";
-            // 
-            // txtStaffn
-            // 
-            this.txtStaffn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaffn.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStaffn.Location = new System.Drawing.Point(158, 182);
-            this.txtStaffn.Name = "txtStaffn";
-            this.txtStaffn.Size = new System.Drawing.Size(204, 28);
-            this.txtStaffn.TabIndex = 76;
             // 
             // label4
             // 
@@ -327,6 +319,14 @@
             this.dataGridView1.Location = new System.Drawing.Point(22, 451);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
@@ -399,11 +399,7 @@
             this.cbStaffp.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStaffp.FormattingEnabled = true;
             this.cbStaffp.Items.AddRange(new object[] {
-            "អ្នកគិតលុយ",
-            "បម្រើសេវាកម្ម",
-            "អ្នកគ្រប់គ្រង",
-            "អ្នកថែទាំ",
-            "អ្នកសម្អាត"});
+            ""});
             this.cbStaffp.Location = new System.Drawing.Point(160, 234);
             this.cbStaffp.Name = "cbStaffp";
             this.cbStaffp.Size = new System.Drawing.Size(202, 27);
@@ -491,12 +487,23 @@
             this.txtBagType.Size = new System.Drawing.Size(202, 27);
             this.txtBagType.TabIndex = 105;
             // 
+            // staffNameComboBox
+            // 
+            this.staffNameComboBox.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staffNameComboBox.FormattingEnabled = true;
+            this.staffNameComboBox.Location = new System.Drawing.Point(158, 184);
+            this.staffNameComboBox.Name = "staffNameComboBox";
+            this.staffNameComboBox.Size = new System.Drawing.Size(202, 27);
+            this.staffNameComboBox.TabIndex = 106;
+            this.staffNameComboBox.SelectedIndexChanged += new System.EventHandler(this.staffNameComboBox_SelectedIndexChanged);
+            // 
             // Baggage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(966, 663);
+            this.Controls.Add(this.staffNameComboBox);
             this.Controls.Add(this.txtBagType);
             this.Controls.Add(this.txtDes);
             this.Controls.Add(this.txtOrigin);
@@ -522,7 +529,6 @@
             this.Controls.Add(this.txtReciver);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtStaffn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCon);
             this.Controls.Add(this.label3);
@@ -548,7 +554,6 @@
         private System.Windows.Forms.TextBox txtCus;
         private System.Windows.Forms.TextBox txtCon;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtStaffn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtReciver;
@@ -575,5 +580,6 @@
         private System.Windows.Forms.ComboBox txtOrigin;
         private System.Windows.Forms.ComboBox txtDes;
         private System.Windows.Forms.ComboBox txtBagType;
+        private System.Windows.Forms.ComboBox staffNameComboBox;
     }
 }
