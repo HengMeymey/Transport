@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -10,7 +11,7 @@ namespace Final
 {
     public partial class Report : Form
     {
-        string connectionString = "Data Source=localhost;Initial Catalog=dboTransportation;Integrated Security=True;";
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
         public Report()
         {
             InitializeComponent();
@@ -145,7 +146,7 @@ namespace Final
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var formToOpen = new Login();
+            var formToOpen = new Form2();
             formToOpen.Show();
         }
     }

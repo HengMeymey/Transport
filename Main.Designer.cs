@@ -31,12 +31,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnStaff = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.btnPayment = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnBooking = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.btnReport = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +62,7 @@
             this.btnStaff.TabIndex = 1;
             this.btnStaff.Text = "Staff";
             this.btnStaff.UseVisualStyleBackColor = false;
+            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // button4
             // 
@@ -76,18 +77,18 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // btnPayment
+            // button1
             // 
-            this.btnPayment.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnPayment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayment.Location = new System.Drawing.Point(674, 441);
-            this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(236, 95);
-            this.btnPayment.TabIndex = 11;
-            this.btnPayment.Text = "Payment";
-            this.btnPayment.UseVisualStyleBackColor = false;
-            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(370, 562);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(236, 95);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Report";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -140,30 +141,30 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // btnReport
+            // btnPayment
             // 
-            this.btnReport.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(373, 581);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(229, 83);
-            this.btnReport.TabIndex = 11;
-            this.btnReport.Text = "Report";
-            this.btnReport.UseVisualStyleBackColor = false;
-            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            this.btnPayment.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnPayment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.Location = new System.Drawing.Point(674, 441);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(236, 95);
+            this.btnPayment.TabIndex = 11;
+            this.btnPayment.Text = "Payment";
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1266, 695);
+            this.ClientSize = new System.Drawing.Size(1047, 712);
             this.Controls.Add(this.btnPayment);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.btnReport);
             this.Controls.Add(this.button7);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.btnBooking);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnStaff);
             this.Controls.Add(this.pictureBox1);
@@ -180,11 +181,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnStaff;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnBooking;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.Button btnPayment;
     }
 }

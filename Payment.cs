@@ -13,13 +13,14 @@ using System.IO;
 using Newtonsoft.Json;
 using static Final.Main;
 using static Final.Bus;
+using System.Configuration;
 
 
 namespace Final
 {
     public partial class Payment : Form
     {
-        string connectionString = "Data Source=localhost;Initial Catalog=dboTransportation;Integrated Security=True;";
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
         public Payment()
         {
             InitializeComponent();
@@ -199,7 +200,7 @@ namespace Final
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var formToOpen = new Login();
+            var formToOpen = new Form2();
             formToOpen.Show();
         }
 

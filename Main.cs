@@ -12,6 +12,7 @@ using static Final.Schedule;
 using static Final.Payment;
 using static Final.Report;
 using static Final.Booking;
+using static Final.Staff;
 
 namespace Final
 {
@@ -30,7 +31,7 @@ namespace Final
         }
         public class Login : Form2
         {
-            
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -59,6 +60,13 @@ namespace Final
             formToOpen.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Report();
+            formToOpen.Show();
+        }
+
         private void btnBooking_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -66,10 +74,10 @@ namespace Final
             formToOpen.Show();
         }
 
-        private void btnReport_Click(object sender, EventArgs e)
+        private void btnStaff_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var formToOpen = new Report();
+            var formToOpen = new Staff();
             formToOpen.Show();
         }
     }
