@@ -238,15 +238,22 @@ namespace Final
                             txtFare.Text = firstRow["Fare"].ToString();
                             dataGridView1.DataSource = dataTable;
 
-                            if (dataGridView1.Columns["Contact"] != null)
+                            // Hide the StaffID column
+                            if (dataGridView1.Columns.Contains("StaffID"))
+                            {
+                                dataGridView1.Columns["StaffID"].Visible = false;
+                            }
+
+                            // Hide other columns if necessary
+                            if (dataGridView1.Columns.Contains("Contact"))
                             {
                                 dataGridView1.Columns["Contact"].Visible = false;
                             }
-                            if (dataGridView1.Columns["StaffName"] != null)
+                            if (dataGridView1.Columns.Contains("StaffName"))
                             {
                                 dataGridView1.Columns["StaffName"].Visible = false;
                             }
-                            if (dataGridView1.Columns["StaffPosition"] != null)
+                            if (dataGridView1.Columns.Contains("StaffPosition"))
                             {
                                 dataGridView1.Columns["StaffPosition"].Visible = false;
                             }
@@ -275,6 +282,7 @@ namespace Final
                 MessageBox.Show("Please enter a valid Contact.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -348,10 +356,13 @@ namespace Final
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
-                    dataGridView1.DataSource = null;
-                    dataGridView1.Rows.Clear();
-                    dataGridView1.Columns.Clear();
                     dataGridView1.DataSource = dataTable;
+
+                    // Hide the StaffID column
+                    if (dataGridView1.Columns.Contains("StaffID"))
+                    {
+                        dataGridView1.Columns["StaffID"].Visible = false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -361,6 +372,53 @@ namespace Final
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            int baggageID;
+            if (int.TryParse(txtID.Text, out baggageID))
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        connection.Open();
+                        Console.WriteLine("Connection successful!");
+
+                        SqlCommand command = new SqlCommand("dbo.spDeleteBaggage", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@BaggageID", baggageID);
+
+                        command.ExecuteNonQuery();
+                        PopulateDataGridView();
+                        txtID.Text = string.Empty;
+                        txtCus.Text = string.Empty;
+                        txtCon.Text = string.Empty;
+                        staffNameComboBox.Text = string.Empty;
+                        cbStaffp.Text = string.Empty;
+                        txtReciver.Text = string.Empty;
+                        txtOrigin.Text = string.Empty;
+                        txtDes.Text = string.Empty;
+                        txtBagType.Text = string.Empty;
+                        txtQty.Text = string.Empty;
+                        txtScale.Text = string.Empty;
+                        txtFare.Text = string.Empty;
+                        MessageBox.Show("Data deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+                        MessageBox.Show("Error occurred while deleting data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid Bus ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         private void PopulateStaffNameComboBox()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -460,5 +518,6 @@ namespace Final
             var mainToOpen = new Main();
             mainToOpen.Show();
         }
+
     }
 }

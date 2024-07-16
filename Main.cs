@@ -73,7 +73,11 @@ namespace Final
             var formToOpen = new Booking();
             formToOpen.Show();
         }
+        public class BaggageForm : Baggage
+        {
 
+        }
+        
         private void btnStaff_Click(object sender, EventArgs e)
         {
             this.Hide();
