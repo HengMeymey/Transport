@@ -11,6 +11,7 @@ namespace Final
 {
     public partial class Staff : Form
     {
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
         public Staff()
         {
             InitializeComponent();
@@ -18,7 +19,6 @@ namespace Final
             dataGridView1.CellClick += dataGridView1_CellContentClick;
 
         }
-        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
         public class MainForm : Main
         {
