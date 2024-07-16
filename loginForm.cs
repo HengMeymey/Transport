@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static Final.Main;
+using System.Configuration;
 
 namespace Final
 {
     public partial class Form2 : Form
     {
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
         static void Main1()
         {
@@ -32,10 +34,6 @@ namespace Final
         {
 
         }
-       
-
-       
-
 
 
         private void Login_Click(object sender, EventArgs e)
@@ -43,14 +41,18 @@ namespace Final
             string phoneNumber = phone_number.Text;
             string password = txtpassword.Text;
 
-            if (string.IsNullOrEmpty(phoneNumber) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(phoneNumber))
             {
-                MessageBox.Show("Please enter both phone number and password.", "Validation Error");
+                MessageBox.Show("Please enter your phone number.", "Validation Error");
                 return;
             }
 
+            if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter your password.", "Validation Error");
+                return;
+            }
 
-            string connectionString = "Data Source=DESKTOP-C18EFJB\\DBSERVER;Initial Catalog=Transportation;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -59,37 +61,37 @@ namespace Final
                     connection.Open();
                     Console.WriteLine("Connection successful!");
 
-                    SqlCommand command = new SqlCommand("dbo.GetStaffData", connection);
+                    SqlCommand command = new SqlCommand("dbo.spLogin", connection);
                     command.CommandType = CommandType.StoredProcedure;
 
-                    // Add parameters to the command
-                    command.Parameters.AddWithValue("@phonenumber", phoneNumber);
-                    command.Parameters.AddWithValue("@password", password);
+                    command.Parameters.AddWithValue("@Contact", phoneNumber);
+                    command.Parameters.AddWithValue("@Password", password);
 
-                    // Execute the stored procedure
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+                    int loginStatus = (int)command.ExecuteScalar();
+
+                    if (loginStatus == 1)
                     {
-                        reader.Read();
+                        MessageBox.Show("Welcome to our system!", "Login Successful");
+
                         this.Hide();
                         var mainToOpen = new main1();
                         mainToOpen.Show();
-
                     }
                     else
                     {
                         MessageBox.Show("Invalid phone number or password.", "Login Error");
                         Console.WriteLine("No staff data found.");
                     }
-
-                    reader.Close();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error: " + ex.Message);
+                    MessageBox.Show("An error occurred during login. Please try again.", "Login Error");
                 }
             }
         }
+
+
         public class main1 : Main
         {
 
