@@ -424,7 +424,7 @@ namespace Final
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var mainToOpen = new Baggage();
+            var mainToOpen = new Form2();
             mainToOpen.Show();
         }
 

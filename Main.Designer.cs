@@ -43,7 +43,8 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Final.Properties.Resources.photo_2024_06_22_14_29_171;
-            this.pictureBox1.Location = new System.Drawing.Point(370, 25);
+            this.pictureBox1.Location = new System.Drawing.Point(379, 31);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(232, 228);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -56,7 +57,8 @@
             this.btnStaff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStaff.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnStaff.Location = new System.Drawing.Point(57, 318);
+            this.btnStaff.Location = new System.Drawing.Point(23, 308);
+            this.btnStaff.Margin = new System.Windows.Forms.Padding(2);
             this.btnStaff.Name = "btnStaff";
             this.btnStaff.Size = new System.Drawing.Size(250, 100);
             this.btnStaff.TabIndex = 1;
@@ -69,7 +71,8 @@
             this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(54, 439);
+            this.button4.Location = new System.Drawing.Point(23, 463);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(250, 95);
             this.button4.TabIndex = 4;
@@ -82,7 +85,8 @@
             this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(370, 562);
+            this.button1.Location = new System.Drawing.Point(379, 606);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(236, 95);
             this.button1.TabIndex = 5;
@@ -95,7 +99,8 @@
             this.button2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(373, 441);
+            this.button2.Location = new System.Drawing.Point(382, 463);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(229, 95);
             this.button2.TabIndex = 6;
@@ -108,7 +113,7 @@
             this.btnBooking.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnBooking.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBooking.Location = new System.Drawing.Point(373, 318);
+            this.btnBooking.Location = new System.Drawing.Point(379, 308);
             this.btnBooking.Name = "btnBooking";
             this.btnBooking.Size = new System.Drawing.Size(229, 100);
             this.btnBooking.TabIndex = 7;
@@ -121,19 +126,22 @@
             this.button5.BackColor = System.Drawing.Color.LightSteelBlue;
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(674, 318);
+            this.button5.Location = new System.Drawing.Point(722, 308);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(236, 100);
             this.button5.TabIndex = 8;
             this.button5.Text = "Baggage";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Lavender;
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(846, 25);
+            this.button7.Location = new System.Drawing.Point(760, 31);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(141, 44);
             this.button7.TabIndex = 10;
@@ -146,7 +154,7 @@
             this.btnPayment.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnPayment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayment.Location = new System.Drawing.Point(674, 441);
+            this.btnPayment.Location = new System.Drawing.Point(722, 463);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(236, 95);
             this.btnPayment.TabIndex = 11;
@@ -158,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1047, 712);
+            this.ClientSize = new System.Drawing.Size(1309, 712);
             this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button5);
@@ -169,6 +177,7 @@
             this.Controls.Add(this.btnStaff);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
             this.Text = "Main";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
