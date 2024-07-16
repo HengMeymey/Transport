@@ -80,5 +80,12 @@ namespace Final
             var formToOpen = new Staff();
             formToOpen.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToOpen = new Baggage();
+            formToOpen.Show();
+        }
     }
 }

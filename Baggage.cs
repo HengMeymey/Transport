@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static Final.Main;
 
 namespace Final
 {
     public partial class Baggage : Form
     {
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
         public Baggage()
         {
             InitializeComponent();
@@ -14,7 +17,6 @@ namespace Final
             dataGridView1.CellClick += dataGridView1_CellContentClick;
             //this.Load += new System.EventHandler(this.Form1_Load);
         }
-        string connectionString = "Data Source=NOENG\\SQLEXPRESS01;Initial Catalog=Test;Integrated Security=True;";
 
         private void txtNameEN_TextChanged(object sender, EventArgs e)
         {
@@ -40,8 +42,8 @@ namespace Final
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var mainToOpen = new Staff();
-            mainToOpen.Show();
+            var formToOpen = new Form2();
+            formToOpen.Show();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -115,9 +117,9 @@ namespace Final
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "SELECT StaffID FROM tblStaff WHERE Name = @Name";
+                string query = "SELECT StaffID FROM tblStaff WHERE StaffName = @StaffName";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Name", staffName);
+                cmd.Parameters.AddWithValue("@StaffName", staffName);
 
                 conn.Open();
                 object result = cmd.ExecuteScalar();
@@ -359,54 +361,6 @@ namespace Final
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-            int baggageID;
-            if (int.TryParse(txtID.Text, out baggageID))
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    try
-                    {
-                        connection.Open();
-                        Console.WriteLine("Connection successful!");
-
-                        SqlCommand command = new SqlCommand("dbo.spDeleteBaggage", connection);
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@BaggageID", baggageID);
-
-                        command.ExecuteNonQuery();
-                        PopulateDataGridView();
-                        txtID.Text = string.Empty;
-                        txtCus.Text = string.Empty;
-                        txtCon.Text = string.Empty;
-                        staffNameComboBox.Text = string.Empty;
-                        cbStaffp.Text = string.Empty;
-                        txtReciver.Text = string.Empty;
-                        txtOrigin.Text = string.Empty;
-                        txtDes.Text = string.Empty;
-                        txtBagType.Text = string.Empty;
-                        txtQty.Text = string.Empty;
-                        txtScale.Text = string.Empty;
-                        txtFare.Text = string.Empty;
-                        MessageBox.Show("Data deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error: " + ex.Message);
-                        MessageBox.Show("Error occurred while deleting data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter a valid Bus ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
         private void PopulateStaffNameComboBox()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -419,7 +373,7 @@ namespace Final
                 da.Fill(dt);
                 staffNameComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
                 staffNameComboBox.DataSource = dt;
-                staffNameComboBox.DisplayMember = "Name";
+                staffNameComboBox.DisplayMember = "StaffName";
 
             }
         }
@@ -475,7 +429,7 @@ namespace Final
             using (SqlCommand cmd = new SqlCommand(procedureName, conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Name", staffName);
+                cmd.Parameters.AddWithValue("@StaffName", staffName);
 
                 try
                 {
@@ -500,5 +454,11 @@ namespace Final
             return string.Empty; 
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var mainToOpen = new Main();
+            mainToOpen.Show();
+        }
     }
 }
