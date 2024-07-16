@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Final
 {
@@ -17,7 +18,7 @@ namespace Final
             dataGridView1.CellClick += dataGridView1_CellContentClick;
 
         }
-        string connectionString = DataBaseConfig.ConnectionString;
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
         public class MainForm : Main
         {
@@ -101,8 +102,8 @@ namespace Final
                 DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
 
                 txtID.Text = selectedRow.Cells["StaffID"].Value.ToString();
-                txtNameEN.Text = selectedRow.Cells["Name"].Value.ToString();
-                txtNameKH.Text = selectedRow.Cells["NameKH"].Value.ToString();
+                txtNameEN.Text = selectedRow.Cells["StaffName"].Value.ToString();
+                txtNameKH.Text = selectedRow.Cells["StaffNameKH"].Value.ToString();
                 txtCon.Text = selectedRow.Cells["Contact"].Value.ToString();
                 cbGen.Text = selectedRow.Cells["Gender"].Value.ToString();
                 txtEma.Text = selectedRow.Cells["Email"].Value.ToString();
@@ -157,7 +158,7 @@ namespace Final
 
                         SqlCommand command = new SqlCommand("dbo.spSearchStaffByName", connection);
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@Name", staffName);
+                        command.Parameters.AddWithValue("@StaffName", staffName);
                         SqlDataReader reader = command.ExecuteReader();
 
                         if (reader.HasRows)
@@ -167,8 +168,8 @@ namespace Final
                             DataRow firstRow = dataTable.Rows[0];
 
                             txtID.Text = firstRow["StaffID"].ToString();
-                            txtNameEN.Text = firstRow["Name"].ToString();
-                            txtNameKH.Text = firstRow["NameKH"].ToString();
+                            txtNameEN.Text = firstRow["StaffName"].ToString();
+                            txtNameKH.Text = firstRow["StaffNameKH"].ToString();
                             txtCon.Text = firstRow["Contact"].ToString();
                             cbGen.Text = firstRow["Gender"].ToString();
                             txtEma.Text = firstRow["Email"].ToString();
@@ -246,8 +247,8 @@ namespace Final
 
                     SqlCommand command = new SqlCommand("dbo.spInsertStaff", connection);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@Name", txtNameEN.Text);
-                    command.Parameters.AddWithValue("@NameKH", txtNameKH.Text);
+                    command.Parameters.AddWithValue("@StaffName", txtNameEN.Text);
+                    command.Parameters.AddWithValue("@StaffNameKH", txtNameKH.Text);
                     command.Parameters.AddWithValue("@Contact", txtCon.Text);
                     command.Parameters.AddWithValue("@Gender", cbGen.Text);
                     command.Parameters.AddWithValue("@Email", txtEma.Text);
@@ -310,8 +311,8 @@ namespace Final
                         command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.AddWithValue("@StaffID", staffID);
-                        command.Parameters.AddWithValue("@Name", txtNameEN.Text);
-                        command.Parameters.AddWithValue("@NameKH", txtNameKH.Text);
+                        command.Parameters.AddWithValue("@StaffName", txtNameEN.Text);
+                        command.Parameters.AddWithValue("@StaffNameKH", txtNameKH.Text);
                         command.Parameters.AddWithValue("@Contact", txtCon.Text);
                         command.Parameters.AddWithValue("@Gender", cbGen.Text);
                         command.Parameters.AddWithValue("@Email", txtEma.Text);
